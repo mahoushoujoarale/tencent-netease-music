@@ -1,0 +1,105 @@
+.singer {
+    width: 250px;
+    height: 455px;
+    margin-top: 15px;
+
+    &>.container {
+        width: 100%;
+        padding: 0 20px;
+
+        .singer-top {
+            width: 100%;
+            height: 24px;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+
+            &>.title {
+                font-size: 12px;
+                color: #333;
+                font-weight: bold;
+            }
+
+            &>.all {
+                display: block;
+                font-size: 12px;
+                color: #666666;
+            }
+        }
+
+        &>.items {
+            width: 100%;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+
+            &>.item {
+                width: 100%;
+                height: 62px;
+                display: flex;
+                text-decoration: none;
+                border: 1px solid #e9e9e9;
+                background: #fafafa;
+
+                &>.left {
+                    width: 62px;
+                    height: 62px;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                }
+
+                &>.right {
+                    padding: 10px 15px;
+
+                    &>.singer-name {
+                        width: 120px;
+                        font-size: 14px;
+                        color: #333;
+                        font-weight: bold;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+
+                    &>.desc {
+                        width: 120px;
+                        font-size: 12px;
+                        color: #666666;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+                }
+
+                &:hover {
+                    background: #f4f4f4;
+                }
+            }
+        }
+
+        &>.button {
+            width: 210px;
+            height: 31px;
+            line-height: 31px;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+            cursor: pointer;
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            text-decoration: none;
+            color: #333;
+            background-color: rgb(245, 245, 245);
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 3px 3px #ccc;
+
+            &:hover {
+                background-color: rgb(253, 253, 253);
+            }
+        }
+    }
+}

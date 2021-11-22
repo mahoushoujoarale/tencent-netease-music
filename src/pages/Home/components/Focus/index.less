@@ -1,0 +1,37 @@
+.focus {
+    min-width: 1100px;
+    height: 363.7px;
+    transition-duration: 0.5s;
+
+    .center {
+        width: 981.5px;
+        height: 363.7px;
+        margin: 0 auto;
+        position: relative;
+
+        .arrow {
+            width: 37px;
+            height: 63px;
+            position: absolute;
+            top: 50%;
+            margin-top: -31px;
+            z-index: 1;
+            cursor: pointer;
+            background: url('../../../../assets/images/banner.png') no-repeat transparent;
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        .prev {
+            left: -70px;
+            background-position: 0 -360px;
+        }
+
+        .next {
+            right: -70px;
+            background-position: 0 -508px;
+        }
+    }
+}
