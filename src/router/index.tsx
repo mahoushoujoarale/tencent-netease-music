@@ -7,11 +7,14 @@ const MainRouter = () => (
   <>
     <Routes>
       <Route path="/" element={<Navigate to="/discovery/recommend" />} />
-      <Route path="/discovery" element={<Home />}>
-        <Route path="recommend" element={<Home />} />
-      </Route>
-      <Route path="/friend" element={<Friend />} />
-      <Route path="/mine" element={<Mine />} />
+      <Route
+        path="discovery"
+        element={<Navigate to="/discovery/recommend" />}
+      />
+      <Route path="/discovery/recommend" element={<Home />} />
+      <Route path="friend" element={<Friend />} />
+      <Route path="mine" element={<Mine />} />
+      <Route path="*" element={<div>404</div>} />
     </Routes>
   </>
 );
