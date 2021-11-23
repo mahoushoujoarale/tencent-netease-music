@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import "./index.less";
 
 const Aside = () => {
-  const [backTop, setBackTop] = useState(0);
+  const [backTop, setBackTop] = useState(false);
   const handleScroll = () => {
     if (document.body.scrollTop || document.documentElement.scrollTop)
-      setBackTop(1);
-    else setBackTop(0);
+      setBackTop(true);
+    else setBackTop(false);
   };
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);

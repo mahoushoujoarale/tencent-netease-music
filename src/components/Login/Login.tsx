@@ -2,16 +2,18 @@ import { Modal, Form, Button, Input, Checkbox, message } from "antd";
 import React, { useRef } from "react";
 import { login } from "@/apis/login";
 
-const Login = (props) => {
+const Login = (props: { visible: boolean; handleCancel: any }) => {
   const { visible, handleCancel } = props;
 
-  const formRef = useRef();
+  const formRef = useRef<any>();
 
-  const handleLogin = (values) => {
-    login({ phone: values.phone, password: values.password }).then((res) => {
-      console.log(res);
-      message.info(res.message);
-    });
+  const handleLogin = (values: { phone: string; password: string }) => {
+    login({ phone: values.phone, password: values.password }).then(
+      (res: any) => {
+        // console.log(res);
+        message.info(res.message);
+      }
+    );
   };
 
   return (

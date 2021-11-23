@@ -11,7 +11,7 @@ const TopList = () => {
     async function getData() {
       const { list = [] } = await getToplist();
       const middle = [];
-      const data = [];
+      const data: any = [];
       for (let i = 0; i < 3; i++) {
         middle[i] = await getToplistById({ id: list[i].id });
         data[i] = middle[i].playlist || {};
@@ -24,7 +24,7 @@ const TopList = () => {
     <div className="toplist">
       <BlockTitle name="榜单" href="/discover/toplist" />
       <div className="container">
-        {rank.map((playlist) => {
+        {rank.map((playlist: any) => {
           return (
             <div className="column" key={playlist.id}>
               <div className="top-box">
@@ -45,21 +45,23 @@ const TopList = () => {
                 </div>
               </div>
               <div className="bottom">
-                {playlist.tracks.slice(0, 10).map((item, index) => {
-                  return (
-                    <div className="item" key={item.id}>
-                      <span className="number">{index + 1}</span>
-                      <Link to={`/song?id=${item.id}`} className="name">
-                        {item.name}
-                      </Link>
-                      <div className="icons">
-                        <div className="icon play"></div>
-                        <div className="icon add"></div>
-                        <div className="icon collect"></div>
+                {playlist.tracks
+                  .slice(0, 10)
+                  .map((item: any, index: number) => {
+                    return (
+                      <div className="item" key={item.id}>
+                        <span className="number">{index + 1}</span>
+                        <Link to={`/song?id=${item.id}`} className="name">
+                          {item.name}
+                        </Link>
+                        <div className="icons">
+                          <div className="icon play"></div>
+                          <div className="icon add"></div>
+                          <div className="icon collect"></div>
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
                 <Link
                   to={`/discover/toplist?id=${playlist.id}`}
                   className="all"

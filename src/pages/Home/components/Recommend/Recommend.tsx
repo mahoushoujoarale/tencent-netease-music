@@ -31,7 +31,7 @@ const Recommend = () => {
         href="/discover/playlist"
       />
       <ul className="list">
-        {list.map((item) => {
+        {list.map((item: any) => {
           return (
             <li key={item.id}>
               <div className="item">

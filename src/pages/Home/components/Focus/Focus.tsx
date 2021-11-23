@@ -4,7 +4,7 @@ import { getCarousel } from "@/apis/home";
 import { Link } from "react-router-dom";
 import "./index.less";
 
-const contentStyle = {
+const contentStyle: any = {
   height: "363.7px",
   color: "#fff",
   lineHeight: "363.7px",
@@ -23,7 +23,7 @@ const Focus = () => {
     getData();
   }, []);
 
-  const bannerRef = useRef();
+  const bannerRef = useRef<any>();
 
   return (
     <div
@@ -31,7 +31,9 @@ const Focus = () => {
       style={{
         backgroundImage:
           carouselList[currentIndex] &&
-          `url(${carouselList[currentIndex].imageUrl}?imageView&blur=40x20)`,
+          `url(${
+            (carouselList[currentIndex] as any).imageUrl
+          }?imageView&blur=40x20)`,
       }}
     >
       <div className="center">
@@ -40,7 +42,7 @@ const Focus = () => {
           beforeChange={useCallback((from, to) => setCurrentIndex(to), [])}
           ref={bannerRef}
         >
-          {carouselList.map((item) => {
+          {carouselList.map((item: any) => {
             return (
               <div key={item.targetId}>
                 <h3 style={contentStyle}>
@@ -61,13 +63,13 @@ const Focus = () => {
         <div
           className="arrow prev"
           onClick={() => {
-            bannerRef.current.prev();
+            (bannerRef.current as any).prev();
           }}
         ></div>
         <div
           className="arrow next"
           onClick={() => {
-            bannerRef.current.next();
+            (bannerRef.current as any).next();
           }}
         ></div>
       </div>

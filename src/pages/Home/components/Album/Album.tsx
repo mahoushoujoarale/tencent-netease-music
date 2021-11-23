@@ -9,7 +9,7 @@ const loop = [1, 2];
 
 const Album = () => {
   const [albums, setAlbums] = useState([]);
-  const rollerRef = useRef();
+  const rollerRef = useRef<any>();
 
   useEffect(() => {
     async function getData() {
@@ -23,12 +23,12 @@ const Album = () => {
     <div className="album">
       <BlockTitle name="新碟上架" href="/discover/album" />
       <div className="album-roller">
-        <Carousel auto dots={false} ref={rollerRef}>
+        <Carousel autoplay dots={false} ref={rollerRef}>
           {loop.map((item, index) => {
             return (
               <div key={index}>
                 <ul className="album-container">
-                  {albums.slice(index, index + 5).map((item) => {
+                  {albums.slice(index, index + 5).map((item: any) => {
                     return (
                       <li key={item.id} className="album-card">
                         <Link
@@ -60,11 +60,11 @@ const Album = () => {
         </Carousel>
         <div
           className="arrow prev"
-          onClick={() => rollerRef.current.prev()}
+          onClick={() => (rollerRef.current as any).prev()}
         ></div>
         <div
           className="arrow next"
-          onClick={() => rollerRef.current.next()}
+          onClick={() => (rollerRef.current as any).next()}
         ></div>
       </div>
     </div>

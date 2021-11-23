@@ -24,7 +24,7 @@ const Singer = () => {
           </Link>
         </div>
         <div className="items">
-          {list.map((item) => {
+          {list.map((item: any) => {
             return (
               <Link
                 to={`user/home?id=${item.id}`}

@@ -6,7 +6,7 @@ import Mine from "../pages/Mine/Mine";
 const MainRouter = () => (
   <>
     <Routes>
-      <Route exact path="/" element={<Navigate to="/discovery/recommend" />} />
+      <Route path="/" element={<Navigate to="/discovery/recommend" />} />
       <Route path="/discovery" element={<Home />}>
         <Route path="recommend" element={<Home />} />
       </Route>

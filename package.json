@@ -159,5 +159,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/typescript-estree": "^5.4.0"
   }
 }
