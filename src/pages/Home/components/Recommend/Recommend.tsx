@@ -11,8 +11,8 @@ const Recommend = () => {
 
   useEffect(() => {
     async function getData() {
-      const { result: data = [] } = await getRecommend();
-      setList(data.slice(0, 8));
+      const { result } = await getRecommend();
+      setList(result.slice(0, 8));
     }
     getData();
   }, []);
@@ -31,33 +31,40 @@ const Recommend = () => {
         href="/discover/playlist"
       />
       <ul className="list">
-        {list.map((item: any) => {
-          return (
-            <li key={item.id}>
-              <div className="item">
-                <Link to={`/playlist?id=${item.id}`}>
-                  <div
-                    className="content"
-                    style={{ backgroundImage: `url(${item.picUrl})` }}
-                  >
+        {list.map(
+          (item: {
+            id: string;
+            picUrl: string;
+            playCount: number;
+            name: string;
+          }) => {
+            return (
+              <li key={item.id}>
+                <div className="item">
+                  <Link to={`/playlist?id=${item.id}`}>
                     <div
-                      className="bottom"
-                      onClick={(event) => event.preventDefault()}
+                      className="content"
+                      style={{ backgroundImage: `url(${item.picUrl})` }}
                     >
-                      <div className="count">
-                        {formatPlayCount(item.playCount)}
+                      <div
+                        className="bottom"
+                        onClick={(event) => event.preventDefault()}
+                      >
+                        <div className="count">
+                          {formatPlayCount(item.playCount)}
+                        </div>
+                        <div className="play"></div>
                       </div>
-                      <div className="play"></div>
                     </div>
-                  </div>
-                </Link>
-                <Link to={`/playlist?id=${item.id}`}>
-                  <div className="name">{item.name}</div>
-                </Link>
-              </div>
-            </li>
-          );
-        })}
+                  </Link>
+                  <Link to={`/playlist?id=${item.id}`}>
+                    <div className="name">{item.name}</div>
+                  </Link>
+                </div>
+              </li>
+            );
+          }
+        )}
       </ul>
     </div>
   );

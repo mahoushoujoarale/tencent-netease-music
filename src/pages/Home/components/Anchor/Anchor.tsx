@@ -8,8 +8,10 @@ const Anchor = () => {
 
   useEffect(() => {
     async function getData() {
-      const { data = [] } = await getAnchor();
-      setList(data.list.slice(0, 5));
+      const {
+        data: { list },
+      } = await getAnchor();
+      setList(list.slice(0, 5));
     }
     getData();
   }, []);
@@ -18,23 +20,25 @@ const Anchor = () => {
       <div className="container">
         <div className="top">热门主播</div>
         <div className="items">
-          {list.map((item: any) => {
-            return (
-              <div className="item" key={item.id}>
-                <Link
-                  to={`/user/home?id=${item.id}`}
-                  style={{ backgroundImage: `url(${item.avatarUrl})` }}
-                  className="left"
-                ></Link>
-                <div className="right">
-                  <Link to={`/user/home?id=${item.id}`} className="name">
-                    {item.nickName}
-                  </Link>
-                  <div className="desc">垃圾接口,啥也没有</div>
+          {list.map(
+            (item: { id: string; avatarUrl: string; nickName: string }) => {
+              return (
+                <div className="item" key={item.id}>
+                  <Link
+                    to={`/user/home?id=${item.id}`}
+                    style={{ backgroundImage: `url(${item.avatarUrl})` }}
+                    className="left"
+                  ></Link>
+                  <div className="right">
+                    <Link to={`/user/home?id=${item.id}`} className="name">
+                      {item.nickName}
+                    </Link>
+                    <div className="desc">垃圾接口,啥也没有</div>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            }
+          )}
         </div>
       </div>
     </div>

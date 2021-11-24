@@ -8,8 +8,8 @@ const Singer = () => {
 
   useEffect(() => {
     async function getData() {
-      const { artists: data = [] } = await getSinger();
-      setList(data.slice(0, 5));
+      const { artists } = await getSinger();
+      setList(artists.slice(0, 5));
     }
     getData();
   }, []);
@@ -24,24 +24,31 @@ const Singer = () => {
           </Link>
         </div>
         <div className="items">
-          {list.map((item: any) => {
-            return (
-              <Link
-                to={`user/home?id=${item.id}`}
-                className="item"
-                key={item.id}
-              >
-                <div
-                  className="left"
-                  style={{ backgroundImage: `url(${item.picUrl})` }}
-                ></div>
-                <div className="right">
-                  <div className="singer-name">{item.name}</div>
-                  <div className="desc">{item.alias[0] || ""}</div>
-                </div>
-              </Link>
-            );
-          })}
+          {list.map(
+            (item: {
+              id: string;
+              picUrl: string;
+              name: string;
+              alias: string[];
+            }) => {
+              return (
+                <Link
+                  to={`user/home?id=${item.id}`}
+                  className="item"
+                  key={item.id}
+                >
+                  <div
+                    className="left"
+                    style={{ backgroundImage: `url(${item.picUrl})` }}
+                  ></div>
+                  <div className="right">
+                    <div className="singer-name">{item.name}</div>
+                    <div className="desc">{item.alias[0] || ""}</div>
+                  </div>
+                </Link>
+              );
+            }
+          )}
         </div>
         <Link to="/st/musician" className="button">
           申请成为网易音乐人

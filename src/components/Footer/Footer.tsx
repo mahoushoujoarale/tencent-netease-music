@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="container">
         <div className="left">
           <ul className="links">
-            {links.map((item) => {
+            {links.map((item: { name: string; href: string }) => {
               return (
                 <li key={item.name}>
                   <a href={item.href} className="link">
@@ -44,7 +44,7 @@ const Footer = () => {
         </div>
         <div className="right">
           <ul className="icons">
-            {copys.map((item) => {
+            {copys.map((item: { name: string; href: string }) => {
               return (
                 <li className={`icon icon-${item.name}`} key={item.name}>
                   <a href={item.href}>{item.name}</a>

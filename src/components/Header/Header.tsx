@@ -23,26 +23,28 @@ const Header = () => {
               <a href="/#">网易云音乐</a>
             </h1>
             <ul className="list">
-              {list.map((item, index) => {
-                return (
-                  <li
-                    key={item.title}
-                    onClick={() => {
-                      setCurrentItem(index);
-                    }}
-                    style={{ display: "inline-block" }}
-                  >
-                    <NavLink
-                      to={item.path}
-                      className={({ isActive }) =>
-                        isActive ? "current-item" : "item"
-                      }
+              {list.map(
+                (item: { title: string; path: string }, index: number) => {
+                  return (
+                    <li
+                      key={item.title}
+                      onClick={() => {
+                        setCurrentItem(index);
+                      }}
+                      style={{ display: "inline-block" }}
                     >
-                      {item.title}
-                    </NavLink>
-                  </li>
-                );
-              })}
+                      <NavLink
+                        to={item.path}
+                        className={({ isActive }) =>
+                          isActive ? "current-item" : "item"
+                        }
+                      >
+                        {item.title}
+                      </NavLink>
+                    </li>
+                  );
+                }
+              )}
             </ul>
             <div className="search">
               <input type="text" placeholder="音乐/视频/电台/用户" />
@@ -67,20 +69,22 @@ const Header = () => {
             style={{ display: !currentItem ? "" : "none" }}
           >
             <ul className="sub-list">
-              {subNav.map((item, index) => {
-                return (
-                  <li key={item.name} style={{ display: "inline-block" }}>
-                    <NavLink
-                      to={item.path}
-                      className={({ isActive }) =>
-                        isActive ? "current-sub-item" : "sub-item"
-                      }
-                    >
-                      {item.name}
-                    </NavLink>
-                  </li>
-                );
-              })}
+              {subNav.map(
+                (item: { name: string; path: string }, index: number) => {
+                  return (
+                    <li key={item.name} style={{ display: "inline-block" }}>
+                      <NavLink
+                        to={item.path}
+                        className={({ isActive }) =>
+                          isActive ? "current-sub-item" : "sub-item"
+                        }
+                      >
+                        {item.name}
+                      </NavLink>
+                    </li>
+                  );
+                }
+              )}
             </ul>
           </div>
         </div>

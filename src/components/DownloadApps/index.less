@@ -1,0 +1,58 @@
+.download-apps {
+    width: 100%;
+    margin-bottom: 40px;
+
+    &>.title {
+        width: 100%;
+        height: 23px;
+        font-weight: bold;
+        font-size: 12px;
+        color: #333;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 20px;
+    }
+
+    &>.app-container {
+        width: 100%;
+        height: 48px;
+        margin-bottom: 25px;
+        display: flex;
+        background: url("../../assets/images/spirite.png") 0 -392px no-repeat;
+
+        &>a {
+            display: block;
+            height: 100%;
+            font-size: 0;
+        }
+
+        &>.iPhone {
+            width: 42px;
+
+            &:hover {
+                background: url("../../assets/images/spirite.png") 0 -472px no-repeat;
+            }
+        }
+
+        &>.PC {
+            width: 60px;
+            margin: 0 26px 0 30px;
+
+            &:hover {
+                background: url("../../assets/images/spirite.png") -72px -472px no-repeat;
+            }
+        }
+
+        &>.Android {
+            width: 42px;
+
+            &:hover {
+                background: url("../../assets/images/spirite.png") -158px -472px no-repeat;
+            }
+        }
+    }
+
+    &>p {
+        color: #999999;
+        margin: 0;
+    }
+}

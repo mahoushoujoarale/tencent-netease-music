@@ -17,8 +17,8 @@ const Focus = () => {
 
   useEffect(() => {
     async function getData() {
-      const { banners: data = [] } = await getCarousel();
-      setCarouselList(data);
+      const { banners } = await getCarousel();
+      setCarouselList(banners);
     }
     getData();
   }, []);
@@ -42,7 +42,7 @@ const Focus = () => {
           beforeChange={useCallback((from, to) => setCurrentIndex(to), [])}
           ref={bannerRef}
         >
-          {carouselList.map((item: any) => {
+          {carouselList.map((item: { targetId: string; imageUrl: string }) => {
             return (
               <div key={item.targetId}>
                 <h3 style={contentStyle}>
