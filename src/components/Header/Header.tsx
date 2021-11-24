@@ -24,7 +24,10 @@ const Header = () => {
             </h1>
             <ul className="list">
               {list.map(
-                (item: { title: string; path: string }, index: number) => {
+                (
+                  item: { title: string; path: string; isHot: boolean },
+                  index: number
+                ) => {
                   return (
                     <li
                       key={item.title}
@@ -40,6 +43,7 @@ const Header = () => {
                         }
                       >
                         {item.title}
+                        {item.isHot ? <span className="isHot"></span> : ""}
                       </NavLink>
                     </li>
                   );
@@ -70,7 +74,10 @@ const Header = () => {
           >
             <ul className="sub-list">
               {subNav.map(
-                (item: { name: string; path: string }, index: number) => {
+                (
+                  item: { name: string; path: string; isHot: boolean },
+                  index: number
+                ) => {
                   return (
                     <li key={item.name} style={{ display: "inline-block" }}>
                       <NavLink
@@ -80,6 +87,7 @@ const Header = () => {
                         }
                       >
                         {item.name}
+                        {item.isHot ? <span className="isHot"></span> : ""}
                       </NavLink>
                     </li>
                   );

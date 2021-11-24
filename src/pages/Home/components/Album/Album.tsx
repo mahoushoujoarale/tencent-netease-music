@@ -23,7 +23,7 @@ const Album = () => {
     <div className="album">
       <BlockTitle name="新碟上架" href="/discover/album" />
       <div className="album-roller">
-        <Carousel autoplay dots={false} ref={rollerRef}>
+        <Carousel dots={false} ref={rollerRef}>
           {loop.map((loopCount: unknown, index: number) => {
             return (
               <div key={index}>
@@ -42,10 +42,10 @@ const Album = () => {
                             <Link
                               to={`/album?id=${item.id}`}
                               className="album-img"
-                              style={{
-                                backgroundImage: `url(${item.picUrl})`,
-                              }}
-                            ></Link>
+                            >
+                              <img src={item.picUrl} alt="封面" />
+                              <span></span>
+                            </Link>
                             <Link
                               to={`/album?id=${item.id}`}
                               className="album-title"
