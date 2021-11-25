@@ -3,8 +3,16 @@ import { request } from "../utils/request";
 export const getLyric = ({ id }: { id: string }) =>
   request(`/lyric?id=${id}`) as Promise<any>;
 
-export const getSongComment = ({ id }: { id: string }) =>
-  request(`/comment/music?id=${id}`) as Promise<any>;
+export const getSongComment = ({
+  id,
+  offset,
+}: {
+  id: string;
+  offset?: number;
+}) =>
+  request(
+    `/comment/music?id=${id}${offset ? "&offset=" + offset : ""}`
+  ) as Promise<any>;
 
 export const getSongDetail = ({ ids }: { ids: string }) =>
   request(`/song/detail?ids=${ids}`) as Promise<any>;

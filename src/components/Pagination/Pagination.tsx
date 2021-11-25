@@ -1,15 +1,15 @@
 import "./index.less";
 import { Pagination as AntdPagination } from "antd";
 
-function itemRender(current: any, type: any, originalElement: any) {
+function itemRender(current: number, type: string, originalElement: any) {
   if (type === "prev") {
-    return <div className="pagination-pre">上一页</div>;
+    return <button className="pagination-pre">上一页</button>;
   }
   if (type === "page") {
     return <div className="pagination-page">{current}</div>;
   }
   if (type === "next") {
-    return <div className="pagination-next">下一页</div>;
+    return <button className="pagination-next">下一页</button>;
   }
   if (type === "jump-prev" || type === "jump-next") {
     return (
@@ -30,18 +30,20 @@ function itemRender(current: any, type: any, originalElement: any) {
 const Pagination = (props: {
   pageSize: number;
   total: number;
-  onChange: () => void;
+  current: number;
+  onPageChange: (current: number) => void;
 }) => {
   return (
     <AntdPagination
-      defaultCurrent={1}
+      current={props.current}
       pageSize={props.pageSize}
       showSizeChanger={false}
-      showTitle={false}
       size="small"
       total={props.total}
       itemRender={itemRender}
-      onChange={props.onChange}
+      onChange={(current) => {
+        props.onPageChange(current);
+      }}
     />
   );
 };

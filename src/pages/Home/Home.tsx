@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Album from "./components/Album/Album";
 import Anchor from "./components/Anchor/Anchor";
 import Focus from "./components/Focus/Focus";
@@ -9,6 +9,10 @@ import TopList from "./components/TopList/TopList";
 import "./index.less";
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="home">
       <Focus />

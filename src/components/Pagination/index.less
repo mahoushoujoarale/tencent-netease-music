@@ -17,7 +17,9 @@
     }
 
     &:disabled {
-        background-position: 0 -650px;
+        color: #cacaca;
+        background-position: 0 -620px;
+        cursor: default;
     }
 }
 
@@ -40,7 +42,9 @@
     }
 
     &:disabled {
-        background-position: -75px -650px;
+        color: #cacaca;
+        background-position: -75px -620px;
+        cursor: default;
     }
 }
 
@@ -69,6 +73,15 @@
     cursor: default;
 }
 
+.ant-pagination-prev,
+.ant-pagination-next {
+    &:hover {
+        &>button {
+            border-color: #ccc;
+        }
+    }
+}
+
 .ant-pagination-jump-prev {
     width: 10px;
     min-width: 0;
@@ -80,7 +93,6 @@
 }
 
 .ant-pagination-item {
-    transform: translateY(1px);
 
     &:hover {
         transition: none;
@@ -95,5 +107,6 @@
     &>div {
         background: url("../../assets/images/button.png") 0 -650px no-repeat;
         border-color: #A2161B;
+        cursor: default;
     }
 }

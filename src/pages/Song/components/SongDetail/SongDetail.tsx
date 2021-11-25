@@ -34,6 +34,7 @@ const SongDetail = () => {
   });
   const [lyric, setLyric] = useState([]);
   const [fold, setFold] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
   const songID = useLocation().search.slice(4);
 
   useEffect(() => {
@@ -71,6 +72,21 @@ const SongDetail = () => {
     }
     getData();
   }, [songID]);
+
+  const onPageChange = (current: number) => {
+    setSongComment({
+      total: songComment.total,
+      comments: [],
+      hotComments: [],
+    });
+    getSongComment({
+      id: songID,
+      offset: current !== 1 ? current : undefined,
+    }).then((res) => {
+      setSongComment(res);
+      setCurrentPage(current);
+    });
+  };
 
   return (
     <>
@@ -127,19 +143,35 @@ const SongDetail = () => {
       </div>
       <div className="song-comments">
         <MakeComments />
-        <div className="song-comment-title">精彩评论</div>
-        {songComment.hotComments.map((item: CommentInterface) => (
-          <Comments key={item.commentId} commentInfo={item} />
-        ))}
-        <div className="song-comment-title">最新评论({songComment.total})</div>
+
+        {songComment.hotComments ? (
+          <>
+            <div className="song-comment-title">精彩评论</div>
+            {songComment.hotComments.map((item: CommentInterface) => (
+              <Comments key={item.commentId} commentInfo={item} />
+            ))}
+          </>
+        ) : (
+          ""
+        )}
+        <div
+          className="song-comment-title"
+          style={{ display: songComment.hotComments ? "" : "none" }}
+        >
+          最新评论(
+          {songComment.total})
+        </div>
         {songComment.comments.map((item: CommentInterface) => (
           <Comments key={item.commentId} commentInfo={item} />
         ))}
         <div className="song-pagination">
           <Pagination
             pageSize={20}
+            current={currentPage}
             total={songComment.total}
-            onChange={() => {}}
+            onPageChange={(current: number) => {
+              onPageChange(current);
+            }}
           />
         </div>
       </div>
