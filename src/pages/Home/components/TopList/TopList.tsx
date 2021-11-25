@@ -22,7 +22,7 @@ const TopList = () => {
   }, []);
 
   return (
-    <div className="toplist">
+    <div className="home-toplist">
       <BlockTitle name="榜单" href="/discover/toplist" />
       <div className="container">
         {rank.map(

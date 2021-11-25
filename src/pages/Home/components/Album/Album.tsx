@@ -20,7 +20,7 @@ const Album = () => {
   }, []);
 
   return (
-    <div className="album">
+    <div className="home-album">
       <BlockTitle name="新碟上架" href="/discover/album" />
       <div className="album-roller">
         <Carousel dots={false} ref={rollerRef}>

@@ -15,7 +15,7 @@ const Singer = () => {
   }, []);
 
   return (
-    <div className="singer">
+    <div className="home-singer">
       <div className="container">
         <div className="singer-top">
           <div className="title">入驻歌手</div>

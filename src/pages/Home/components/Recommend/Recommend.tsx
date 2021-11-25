@@ -18,7 +18,7 @@ const Recommend = () => {
   }, []);
 
   return (
-    <div className="recommend">
+    <div className="home-recommend">
       <BlockTitle
         name="热门推荐"
         list={[

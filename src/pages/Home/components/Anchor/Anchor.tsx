@@ -16,7 +16,7 @@ const Anchor = () => {
     getData();
   }, []);
   return (
-    <div className="anchor">
+    <div className="home-anchor">
       <div className="container">
         <div className="top">热门主播</div>
         <div className="items">

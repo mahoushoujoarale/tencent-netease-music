@@ -27,7 +27,7 @@ const Focus = () => {
 
   return (
     <div
-      className="focus"
+      className="home-focus"
       style={{
         backgroundImage:
           carouselList[currentIndex] &&
