@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./index.less";
-import BlockTitle from "../BlockTitle/BlockTitle";
+import HomeBlockTitle from "../HomeBlockTitle/HomeBlockTitle";
 import { getToplist, getToplistById } from "@/apis/home";
 import { Link } from "react-router-dom";
 
-const TopList = () => {
+const HomeTopList = () => {
   const [rank, setRank] = useState([]);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const TopList = () => {
 
   return (
     <div className="home-toplist">
-      <BlockTitle name="榜单" href="/discover/toplist" />
+      <HomeBlockTitle name="榜单" href="/discover/toplist" />
       <div className="container">
         {rank.map(
           (playlist: {
@@ -87,4 +87,4 @@ const TopList = () => {
   );
 };
 
-export default TopList;
+export default HomeTopList;

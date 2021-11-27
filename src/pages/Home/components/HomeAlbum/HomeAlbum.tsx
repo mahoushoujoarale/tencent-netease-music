@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import BlockTitle from "../BlockTitle/BlockTitle";
+import HomeBlockTitle from "../HomeBlockTitle/HomeBlockTitle";
 import { Carousel } from "antd";
 import { getAlbum } from "@/apis/home";
 import { Link } from "react-router-dom";
@@ -7,7 +7,7 @@ import "./index.less";
 
 const loop = [1, 2];
 
-const Album = () => {
+const HomeAlbum = () => {
   const [albums, setAlbums] = useState([]);
   const rollerRef = useRef<any>();
 
@@ -21,7 +21,7 @@ const Album = () => {
 
   return (
     <div className="home-album">
-      <BlockTitle name="新碟上架" href="/discover/album" />
+      <HomeBlockTitle name="新碟上架" href="/discover/album" />
       <div className="album-roller">
         <Carousel dots={false} ref={rollerRef}>
           {loop.map((loopCount: unknown, index: number) => {
@@ -80,4 +80,4 @@ const Album = () => {
   );
 };
 
-export default Album;
+export default HomeAlbum;

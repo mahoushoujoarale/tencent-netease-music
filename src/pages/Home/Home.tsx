@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import Album from "./components/Album/Album";
-import Anchor from "./components/Anchor/Anchor";
-import Focus from "./components/Focus/Focus";
+import HomeAlbum from "./components/HomeAlbum/HomeAlbum";
+import HomeAnchor from "./components/HomeAnchor/HomeAnchor";
+import HomeFocus from "./components/HomeFocus/HomeFocus";
 import LoginBox from "./components/LoginBox/LoginBox";
-import Recommend from "./components/Recommend/Recommend";
-import Singer from "./components/Singer/Singer";
-import TopList from "./components/TopList/TopList";
+import HomeRecommend from "./components/HomeRecommend/HomeRecommend";
+import HomeSinger from "./components/HomeSinger/HomeSinger";
+import HomeTopList from "./components/HomeTopList/HomeTopList";
 import "./index.less";
 
 const Home = () => {
@@ -15,17 +15,17 @@ const Home = () => {
 
   return (
     <div className="home">
-      <Focus />
+      <HomeFocus />
       <div className="edit-center">
         <div className="left">
-          <Recommend />
-          <Album />
-          <TopList />
+          <HomeRecommend />
+          <HomeAlbum />
+          <HomeTopList />
         </div>
         <div className="right">
           <LoginBox />
-          <Singer />
-          <Anchor />
+          <HomeSinger />
+          <HomeAnchor />
         </div>
       </div>
     </div>

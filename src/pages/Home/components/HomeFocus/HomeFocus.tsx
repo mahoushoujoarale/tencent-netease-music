@@ -11,7 +11,7 @@ const contentStyle: any = {
   textAlign: "center",
 };
 
-const Focus = () => {
+const HomeFocus = () => {
   const [carouselList, setCarouselList] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -77,4 +77,4 @@ const Focus = () => {
   );
 };
 
-export default Focus;
+export default HomeFocus;

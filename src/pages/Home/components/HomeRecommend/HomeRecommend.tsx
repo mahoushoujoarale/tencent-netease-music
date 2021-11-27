@@ -1,12 +1,12 @@
 import React from "react";
 import { getRecommend } from "@/apis/home";
 import { useState, useEffect } from "react";
-import BlockTitle from "../BlockTitle/BlockTitle";
+import HomeBlockTitle from "../HomeBlockTitle/HomeBlockTitle";
 import { Link } from "react-router-dom";
 import "./index.less";
 import { formatPlayCount } from "@/utils/formatPlayCount";
 
-const Recommend = () => {
+const HomeRecommend = () => {
   const [list, setList] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Recommend = () => {
 
   return (
     <div className="home-recommend">
-      <BlockTitle
+      <HomeBlockTitle
         name="热门推荐"
         list={[
           { name: "华语", href: "/discover/playlist/?cat=华语" },
@@ -70,4 +70,4 @@ const Recommend = () => {
   );
 };
 
-export default Recommend;
+export default HomeRecommend;

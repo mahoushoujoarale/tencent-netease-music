@@ -3,7 +3,7 @@ import { getAnchor } from "@/apis/home";
 import "./index.less";
 import { Link } from "react-router-dom";
 
-const Anchor = () => {
+const HomeAnchor = () => {
   const [list, setList] = useState([]);
 
   useEffect(() => {
@@ -45,4 +45,4 @@ const Anchor = () => {
   );
 };
 
-export default Anchor;
+export default HomeAnchor;

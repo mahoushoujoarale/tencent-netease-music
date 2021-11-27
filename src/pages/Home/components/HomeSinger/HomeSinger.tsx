@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./index.less";
 import { getSinger } from "@/apis/home";
 
-const Singer = () => {
+const HomeSinger = () => {
   const [list, setList] = useState([]);
 
   useEffect(() => {
@@ -58,4 +58,4 @@ const Singer = () => {
   );
 };
 
-export default Singer;
+export default HomeSinger;

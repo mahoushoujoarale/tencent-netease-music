@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./index.less";
 
-const BlockTitle = (props: {
+const HomeBlockTitle = (props: {
   name: string;
   list?: { name: string; href: string }[];
   href: string;
@@ -33,4 +33,4 @@ const BlockTitle = (props: {
   );
 };
 
-export default BlockTitle;
+export default HomeBlockTitle;
