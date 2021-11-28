@@ -34,8 +34,13 @@ const SongDetail = () => {
   });
   const [lyric, setLyric] = useState([]);
   const [fold, setFold] = useState(true);
+  const [descHeight, setDescHeight] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const songID = useLocation().search.slice(4);
+
+  useEffect(() => {
+    setDescHeight(document.querySelector(".lyric-content")!.clientHeight);
+  }, [songDetail]);
 
   useEffect(() => {
     async function getData() {
@@ -125,12 +130,20 @@ const SongDetail = () => {
             <div className="download-button">下载</div>
             <div className="comment-button">（{songComment.total}）</div>
           </div>
-          <div className="lyric" style={{ height: fold ? "" : "auto" }}>
-            {lyric.map((item: string, index: number) => (
-              <p key={index}>{item}</p>
-            ))}
+          <div className="lyric" style={{ maxHeight: fold ? "" : "none" }}>
+            <div className="lyric-content">
+              {lyric.map((item: string, index: number) => (
+                <p key={index}>{item}</p>
+              ))}
+            </div>
           </div>
-          <div className="fold-button" onClick={() => setFold(!fold)}>
+          <div
+            className="fold-button"
+            onClick={() => setFold(!fold)}
+            style={{
+              display: descHeight > 327 ? "" : "none",
+            }}
+          >
             {fold ? "展开" : "收起"}
             <span
               style={{ backgroundPosition: fold ? "" : "-45px -520px" }}

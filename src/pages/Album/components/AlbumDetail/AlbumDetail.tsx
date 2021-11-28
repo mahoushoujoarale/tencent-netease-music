@@ -116,9 +116,13 @@ const AlbumDetail = () => {
             <div className="album-tips">
               发行时间：{formatTime(albumDetail.album.publishTime, 1)}
             </div>
-            <div className="album-tips">
-              发行公司：{albumDetail.album.company}
-            </div>
+            {albumDetail.album.company === "" ? (
+              ""
+            ) : (
+              <div className="album-tips">
+                发行公司：{albumDetail.album.company}
+              </div>
+            )}
             <div className="buttons">
               <div className="play-button">播放</div>
               <div className="add-to-list-button"></div>
@@ -194,12 +198,14 @@ const AlbumDetail = () => {
                     <td className="td2">
                       <Link to={`/song?id=${item.id}`} className="link-to-song">
                         {item.name}
-                      </Link>{" "}
-                      - (
-                      {item.alia.map((alia: string, aliaIndex: number) => (
-                        <span key={aliaIndex}>{alia}</span>
-                      ))}
-                      )
+                      </Link>
+                      {item.alia.length > 0
+                        ? " - (" +
+                          item.alia.map((alia: string, aliaIndex: number) => (
+                            <span key={aliaIndex}>{alia}</span>
+                          )) +
+                          ")"
+                        : ""}
                     </td>
                     <td className="td3">
                       <div className="time-length">
@@ -227,12 +233,16 @@ const AlbumDetail = () => {
                               className="link-to-artist"
                             >
                               {artist.name}
-                            </Link>{" "}
-                            - (
-                            {artist.tns.map((tn: string, tnIndex: number) => (
-                              <span key={tnIndex}>{tn}</span>
-                            ))}
-                            )
+                            </Link>
+                            {artist.tns
+                              ? " - (" +
+                                artist.tns.map(
+                                  (tn: string, tnIndex: number) => (
+                                    <span key={tnIndex}>{tn}</span>
+                                  )
+                                ) +
+                                "）"
+                              : ""}
                           </div>
                         )
                       )}
@@ -247,7 +257,7 @@ const AlbumDetail = () => {
       <div className="album-comments">
         <MakeComments />
 
-        {albumComment.hotComments ? (
+        {albumComment.hotComments.length > 0 ? (
           <>
             <div className="album-comment-title">精彩评论</div>
             {albumComment.hotComments.map((item: CommentInterface) => (
@@ -257,26 +267,34 @@ const AlbumDetail = () => {
         ) : (
           ""
         )}
-        <div
-          className="album-comment-title"
-          style={{ display: albumComment.hotComments ? "" : "none" }}
-        >
-          最新评论(
-          {albumComment.total})
-        </div>
-        {albumComment.comments.map((item: CommentInterface) => (
-          <Comments key={item.commentId} commentInfo={item} />
-        ))}
-        <div className="album-pagination">
-          <Pagination
-            pageSize={20}
-            current={currentPage}
-            total={albumComment.total}
-            onPageChange={(current: number) => {
-              onPageChange(current);
-            }}
-          />
-        </div>
+        {albumComment.comments.length > 0 ? (
+          <>
+            <div
+              className="album-comment-title"
+              style={{
+                display: albumComment.hotComments.length > 0 ? "" : "none",
+              }}
+            >
+              最新评论(
+              {albumComment.total})
+            </div>
+            {albumComment.comments.map((item: CommentInterface) => (
+              <Comments key={item.commentId} commentInfo={item} />
+            ))}
+            <div className="album-pagination">
+              <Pagination
+                pageSize={20}
+                current={currentPage}
+                total={albumComment.total}
+                onPageChange={(current: number) => {
+                  onPageChange(current);
+                }}
+              />
+            </div>
+          </>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );
