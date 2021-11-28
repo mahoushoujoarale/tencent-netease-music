@@ -16,6 +16,7 @@ const HomeAlbum = () => {
       const { albums } = await getAlbum();
       setAlbums(albums.slice(0, 10));
     }
+
     getData();
   }, []);
 

@@ -127,7 +127,7 @@ const SongDetail = () => {
           </div>
           <div className="lyric" style={{ height: fold ? "" : "auto" }}>
             {lyric.map((item: string, index: number) => (
-              <p key={item + index}>{item}</p>
+              <p key={index}>{item}</p>
             ))}
           </div>
           <div className="fold-button" onClick={() => setFold(!fold)}>

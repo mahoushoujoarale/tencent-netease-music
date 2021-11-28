@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import HomeBlockTitle from "../HomeBlockTitle/HomeBlockTitle";
 import { Link } from "react-router-dom";
 import "./index.less";
-import { formatPlayCount } from "@/utils/formatPlayCount";
+import { formatPlayCount } from "@/utils";
 
 const HomeRecommend = () => {
   const [list, setList] = useState([]);

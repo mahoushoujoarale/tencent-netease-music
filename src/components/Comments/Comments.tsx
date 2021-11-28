@@ -1,6 +1,6 @@
 import "./index.less";
 import comment_vip_icon from "@/assets/images/comment_vip_icon.png";
-import { formatTime } from "@/utils/formatTime";
+import { formatTime } from "@/utils";
 import { Link } from "react-router-dom";
 
 const Comments = (props: {
