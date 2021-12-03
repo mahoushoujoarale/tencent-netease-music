@@ -62,7 +62,6 @@ const PlaylistDetail = () => {
       const { playlist } = await getPlaylistDetail({
         id: playlistID,
       });
-      console.log(playlist);
 
       setPlaylistDetail(playlist);
     }

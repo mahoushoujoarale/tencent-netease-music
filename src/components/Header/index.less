@@ -145,7 +145,7 @@
                 }
             }
 
-            &>.login {
+            &>.header-login {
                 color: #787878;
                 font-size: 12px;
                 cursor: pointer;
@@ -153,6 +153,62 @@
 
                 &:hover {
                     color: #ffffff;
+                }
+            }
+
+            &>.header-user-photo {
+                position: relative;
+                line-height: 70px;
+
+                &:hover {
+                    &>.user-pane {
+                        display: block;
+                    }
+                }
+
+                &>img {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 30px;
+                }
+
+                &>.user-pane {
+                    display: none;
+                    position: absolute;
+                    top: 58px;
+                    right: -43px;
+                    width: 158px;
+                    background: #2b2b2b;
+                    border: 1px solid #202020;
+                    box-shadow: 0 8px 24px 0 rgb(0 0 0);
+                    border-radius: 4px;
+                    z-index: 99;
+
+                    &>.item {
+                        color: #ccc;
+                        display: block;
+                        line-height: 34px;
+                        text-decoration: none;
+                        padding-left: 24px;
+                        cursor: pointer;
+                        box-sizing: border-box;
+                        overflow: hidden;
+                        padding-left: 24px;
+
+                        &:hover {
+                            background: #353535;
+                            color: #fff;
+                        }
+
+                        &>span {
+                            width: 18px;
+                            height: 18px;
+                            display: inline-block;
+                            margin-right: 10px;
+                            transform: translateY(4px);
+                            background: url("../../assets/images/toplist.png") no-repeat 0 9999px;
+                        }
+                    }
                 }
             }
         }

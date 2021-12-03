@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import HomeAlbum from "./components/HomeAlbum/HomeAlbum";
 import HomeAnchor from "./components/HomeAnchor/HomeAnchor";
 import HomeFocus from "./components/HomeFocus/HomeFocus";
-import LoginBox from "./components/LoginBox/LoginBox";
+import HomeLoginBox from "./components/HomeLoginBox/HomeLoginBox";
 import HomeRecommend from "./components/HomeRecommend/HomeRecommend";
 import HomeSinger from "./components/HomeSinger/HomeSinger";
 import HomeTopList from "./components/HomeTopList/HomeTopList";
@@ -23,7 +23,7 @@ const Home = () => {
           <HomeTopList />
         </div>
         <div className="right">
-          <LoginBox />
+          <HomeLoginBox />
           <HomeSinger />
           <HomeAnchor />
         </div>

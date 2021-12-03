@@ -44,3 +44,17 @@ export function formatPlayCount(playCount: number) {
     return Math.floor(playCount / 10000000) / 10 + "亿";
   }
 }
+
+export function transfromTarget(target: number) {
+  if (target === 1000) {
+    return "playlist";
+  } else if (target === 1) {
+    return "song";
+  } else if (target === 10) {
+    return "album";
+  } else if (target === 0 || target === 3000) {
+    return "";
+  } else {
+    console.log("目标target出错");
+  }
+}

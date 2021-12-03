@@ -1,0 +1,174 @@
+.home-login-box {
+    width: 250px;
+    height: 126px;
+    padding: 20px;
+    background: url("../../../../assets/images/title.png") no-repeat 0 0;
+
+    &>.tips {
+        font-size: 12px;
+        color: #666666;
+        line-height: 22px;
+    }
+
+    &>.login-button {
+        width: 100px;
+        height: 31px;
+        margin: 10px auto 0;
+        color: #fff;
+        line-height: 31px;
+        text-align: center;
+        cursor: pointer;
+        background: url("../../../../assets/images/title.png") no-repeat 0 -195px;
+
+        &:hover {
+            background-position: -110px -195px;
+        }
+    }
+}
+
+.home-login-user-pane {
+    width: 100%;
+    background-color: rgb(245 245 245);
+    padding: 20px 20px 10px;
+
+    &>.top {
+        width: 100%;
+        display: flex;
+
+        &>.user-photo {
+            width: 80px;
+            height: 80px;
+            padding: 2px;
+            background: #fff;
+            border: 1px solid #dadada;
+            overflow: hidden;
+            box-sizing: content-box;
+
+            &>img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        &>.right {
+            width: 115px;
+            margin-left: 18px;
+
+            &>.user-name {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                word-wrap: normal;
+                font-size: 14px;
+                display: block;
+                color: #333;
+                font-weight: bold;
+            }
+
+            &>.user-level {
+                display: inline-block;
+                width: 40px;
+                height: 17px;
+                margin-top: 3px;
+                overflow: hidden;
+                padding-left: 25px;
+                line-height: 18px;
+                position: relative;
+                color: #999;
+                cursor: pointer;
+                font-weight: bold;
+                font-style: italic;
+                text-decoration: none;
+                background: url("../../../../assets/images/icon2.png") -130px -64px no-repeat;
+
+                &:hover {
+                    background-position: -130px -84px;
+                    color: #777;
+
+                    &::after {
+                        background-position: -192px -84px;
+                    }
+                }
+
+                &::after {
+                    width: 8px;
+                    height: 17px;
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    display: inline-block;
+                    cursor: pointer;
+                    background: url("../../../../assets/images/icon2.png") -192px -64px no-repeat;
+                }
+            }
+
+            &>.sign-button {
+                color: #fff;
+                width: 60px;
+                box-sizing: content-box;
+                padding: 0 15px 0 20px;
+                white-space: nowrap;
+                position: relative;
+                margin-top: 10px;
+                line-height: 31px;
+                overflow: hidden;
+                vertical-align: top;
+                text-align: center;
+                cursor: pointer;
+                background: url("../../../../assets/images/button2.png") 0 -387px no-repeat;
+
+                &:hover {
+                    background-position: 0 -469px;
+
+                    &::after {
+                        background-position: right -510px;
+                    }
+                }
+
+                &::after {
+                    width: 5px;
+                    height: 31px;
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    display: inline-block;
+                    cursor: pointer;
+                    background: url("../../../../assets/images/button2.png") right -428px no-repeat;
+                }
+            }
+        }
+    }
+
+    &>.bottom {
+        display: flex;
+        margin-top: 20px;
+
+        &>.item {
+            height: 40px;
+            padding: 0 18px;
+            border-right: 1px solid #e4e4e4;
+            color: #666666;
+            display: block;
+            text-decoration: none;
+            text-align: center;
+
+            &:hover {
+                color: #0c73c2;
+
+                &>span {
+                    color: #0c73c2;
+                }
+            }
+
+            &>span {
+                display: block;
+                color: #666;
+                font-size: 20px;
+                height: 26px;
+                font-weight: normal;
+            }
+        }
+    }
+}

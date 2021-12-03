@@ -3,6 +3,7 @@ import { Carousel } from "antd";
 import { getCarousel } from "@/apis/home";
 import { Link } from "react-router-dom";
 import "./index.less";
+import { transfromTarget } from "@/utils";
 
 const contentStyle: any = {
   height: "363.7px",
@@ -18,6 +19,7 @@ const HomeFocus = () => {
   useEffect(() => {
     async function getData() {
       const { banners } = await getCarousel();
+
       setCarouselList(banners);
     }
     getData();
@@ -42,23 +44,33 @@ const HomeFocus = () => {
           beforeChange={useCallback((from, to) => setCurrentIndex(to), [])}
           ref={bannerRef}
         >
-          {carouselList.map((item: { targetId: string; imageUrl: string }) => {
-            return (
-              <div key={item.targetId}>
-                <h3 style={contentStyle}>
-                  <div>
-                    <Link to={`/song?id=${item.targetId}`}>
-                      <img
-                        style={{ height: "363.7px" }}
-                        src={item.imageUrl}
-                        alt={item.targetId}
-                      />
-                    </Link>
-                  </div>
-                </h3>
-              </div>
-            );
-          })}
+          {carouselList.map(
+            (item: {
+              targetId: string;
+              imageUrl: string;
+              targetType: number;
+            }) => {
+              return (
+                <div key={item.targetId}>
+                  <h3 style={contentStyle}>
+                    <div>
+                      <Link
+                        to={`/${transfromTarget(item.targetType)}?id=${
+                          item.targetId
+                        }`}
+                      >
+                        <img
+                          style={{ height: "363.7px" }}
+                          src={item.imageUrl}
+                          alt={item.targetId}
+                        />
+                      </Link>
+                    </div>
+                  </h3>
+                </div>
+              );
+            }
+          )}
         </Carousel>
         <div
           className="arrow prev"
