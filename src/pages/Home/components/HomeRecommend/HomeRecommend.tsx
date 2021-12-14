@@ -5,6 +5,16 @@ import HomeBlockTitle from "../HomeBlockTitle/HomeBlockTitle";
 import { Link } from "react-router-dom";
 import "./index.less";
 import { formatPlayCount } from "@/utils";
+import { action } from "mobx";
+import store from "@/store";
+import { getSongInList } from "@/apis/song";
+
+interface DataI {
+  name: string;
+  artist: string;
+  url: string;
+  cover: string;
+}
 
 const HomeRecommend = () => {
   const [list, setList] = useState([]);
@@ -16,6 +26,32 @@ const HomeRecommend = () => {
     }
     getData();
   }, []);
+
+  const resetPlaylist = async (id: string) => {
+    const data: DataI[] = [];
+
+    const { songs } = await getSongInList({
+      id: id,
+      limit: 10,
+    });
+
+    songs.map(
+      (item: {
+        name: string;
+        id: string;
+        al: { picUrl: string };
+        ar: { name: string }[];
+      }) =>
+        data.push({
+          name: item.name,
+          artist: item.ar[0].name,
+          url: `https://music.163.com/song/media/outer/url?id=${item.id}.mp3`,
+          cover: item.al.picUrl,
+        })
+    );
+
+    store.resetPlaylist(data);
+  };
 
   return (
     <div className="home-recommend">
@@ -53,7 +89,13 @@ const HomeRecommend = () => {
                         <div className="count">
                           {formatPlayCount(item.playCount)}
                         </div>
-                        <div className="play"></div>
+                        <div
+                          className="play"
+                          onClick={action((event) => {
+                            event.preventDefault();
+                            resetPlaylist(item.id);
+                          })}
+                        ></div>
                       </div>
                     </div>
                   </Link>

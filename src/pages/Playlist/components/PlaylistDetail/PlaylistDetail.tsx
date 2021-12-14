@@ -6,6 +6,9 @@ import MakeComments from "@/components/MakeComments/MakeComments";
 import Comments from "@/components/Comments/Comments";
 import Pagination from "@/components/Pagination/Pagination";
 import { formatDuration, formatTime } from "@/utils";
+import store from "@/store";
+import { getSongDetail, getSongInList } from "@/apis/song";
+import { action } from "mobx";
 
 interface CommentInterface {
   beReplied: [];
@@ -20,6 +23,12 @@ interface CommentInterface {
   time: string;
   commentId: string;
   likedCount: number;
+}
+interface DataI {
+  name: string;
+  artist: string;
+  url: string;
+  cover: string;
 }
 
 const PlaylistDetail = () => {
@@ -94,6 +103,47 @@ const PlaylistDetail = () => {
     });
   };
 
+  const resetPlaylist = async (id: string) => {
+    const data: DataI[] = [];
+
+    const { songs } = await getSongInList({
+      id: id,
+      limit: 10,
+    });
+
+    songs.map(
+      (item: {
+        name: string;
+        id: string;
+        al: { picUrl: string };
+        ar: { name: string }[];
+      }) =>
+        data.push({
+          name: item.name,
+          artist: item.ar[0].name,
+          url: `https://music.163.com/song/media/outer/url?id=${item.id}.mp3`,
+          cover: item.al.picUrl,
+        })
+    );
+
+    store.resetPlaylist(data);
+  };
+
+  const addToPlaylist = async (id: string) => {
+    const { songs } = await getSongDetail({
+      ids: id,
+    });
+
+    const data: DataI = {
+      name: songs[0].name,
+      artist: songs[0].ar[0].name,
+      url: `https://music.163.com/song/media/outer/url?id=${songs[0].id}.mp3`,
+      cover: songs[0].al.picUrl,
+    };
+
+    store.addToPlaylist(data);
+  };
+
   return (
     <>
       <div className="playlist-detail">
@@ -131,7 +181,12 @@ const PlaylistDetail = () => {
               </div>
             </div>
             <div className="buttons">
-              <div className="play-button">播放</div>
+              <div
+                className="play-button"
+                onClick={action(() => resetPlaylist(playlistDetail.id))}
+              >
+                播放
+              </div>
               <div className="add-to-list-button"></div>
               <div className="store-button">
                 （{playlistDetail.subscribedCount}）
@@ -216,7 +271,9 @@ const PlaylistDetail = () => {
                   <tr key={index}>
                     <td className="td1">
                       <div className="no">{index + 1}</div>
-                      <span></span>
+                      <span
+                        onClick={action(() => addToPlaylist(item.id))}
+                      ></span>
                     </td>
                     <td className="td2">
                       <Link to={`/song?id=${item.id}`} className="link-to-song">

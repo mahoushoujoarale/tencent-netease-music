@@ -1,8 +1,17 @@
 import "./index.less";
-import { getSimiList, getSimiSongs } from "@/apis/song";
+import { getSimiList, getSimiSongs, getSongDetail } from "@/apis/song";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import DownloadApps from "@/components/DownloadApps/DownloadApps";
+import { action } from "mobx";
+import store from "@/store";
+
+interface DataI {
+  name: string;
+  artist: string;
+  url: string;
+  cover: string;
+}
 
 const SongRelative = () => {
   const songID = useLocation().search.slice(4);
@@ -30,6 +39,21 @@ const SongRelative = () => {
     }
     getData();
   }, [songID]);
+
+  const addToPlaylist = async (id: string) => {
+    const { songs } = await getSongDetail({
+      ids: id,
+    });
+
+    const data: DataI = {
+      name: songs[0].name,
+      artist: songs[0].ar[0].name,
+      url: `https://music.163.com/song/media/outer/url?id=${songs[0].id}.mp3`,
+      cover: songs[0].al.picUrl,
+    };
+
+    store.addToPlaylist(data);
+  };
 
   return (
     <div className="song-relative">
@@ -83,7 +107,10 @@ const SongRelative = () => {
               </div>
             </div>
             <div className="right">
-              <div className="play"></div>
+              <div
+                className="play"
+                onClick={action(() => addToPlaylist(item.id))}
+              ></div>
               <div className="add-to-list"></div>
             </div>
           </div>
