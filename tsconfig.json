@@ -28,6 +28,6 @@
   },
   "include": [
     "src",
-    "./images.d.ts"
+    "module.d.ts"
   ]
 }

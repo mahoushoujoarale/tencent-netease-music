@@ -3,6 +3,16 @@ import "./index.less";
 import HomeBlockTitle from "../HomeBlockTitle/HomeBlockTitle";
 import { getToplist, getToplistById } from "@/apis/home";
 import { Link } from "react-router-dom";
+import store from "@/store";
+import { action } from "mobx";
+import { getSongDetail, getSongInList } from "@/apis/song";
+
+interface DataI {
+  name: string;
+  artist: string;
+  url: string;
+  cover: string;
+}
 
 const HomeTopList = () => {
   const [rank, setRank] = useState([]);
@@ -21,6 +31,47 @@ const HomeTopList = () => {
     getData();
   }, []);
 
+  const resetPlaylist = async (id: string) => {
+    const data: DataI[] = [];
+
+    const { songs } = await getSongInList({
+      id: id,
+      limit: 10,
+    });
+
+    songs.map(
+      (item: {
+        name: string;
+        id: string;
+        al: { picUrl: string };
+        ar: { name: string }[];
+      }) =>
+        data.push({
+          name: item.name,
+          artist: item.ar[0].name,
+          url: `https://music.163.com/song/media/outer/url?id=${item.id}.mp3`,
+          cover: item.al.picUrl,
+        })
+    );
+
+    store.resetPlaylist(data);
+  };
+
+  const addToPlaylist = async (id: string) => {
+    const { songs } = await getSongDetail({
+      ids: id,
+    });
+
+    const data: DataI = {
+      name: songs[0].name,
+      artist: songs[0].ar[0].name,
+      url: `https://music.163.com/song/media/outer/url?id=${songs[0].id}.mp3`,
+      cover: songs[0].al.picUrl,
+    };
+
+    store.addToPlaylist(data);
+  };
+
   return (
     <div className="home-toplist">
       <HomeBlockTitle name="榜单" href="/discover/toplist" />
@@ -38,7 +89,9 @@ const HomeTopList = () => {
                   <Link
                     to={`/discover/toplist?id=${playlist.id}`}
                     className="left"
-                    style={{ backgroundImage: `url(${playlist.coverImgUrl})` }}
+                    style={{
+                      backgroundImage: `url(${playlist.coverImgUrl})`,
+                    }}
                   ></Link>
                   <div className="right">
                     <Link
@@ -47,7 +100,10 @@ const HomeTopList = () => {
                     >
                       {playlist.name}
                     </Link>
-                    <div className="icon play"></div>
+                    <div
+                      className="icon play"
+                      onClick={action(() => resetPlaylist(playlist.id))}
+                    ></div>
                     <div className="icon collect"></div>
                   </div>
                 </div>
@@ -63,7 +119,10 @@ const HomeTopList = () => {
                               {item.name}
                             </Link>
                             <div className="icons">
-                              <div className="icon play"></div>
+                              <div
+                                className="icon play"
+                                onClick={action(() => addToPlaylist(item.id))}
+                              ></div>
                               <div className="icon add"></div>
                               <div className="icon collect"></div>
                             </div>

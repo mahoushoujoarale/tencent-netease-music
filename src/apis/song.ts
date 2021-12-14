@@ -22,3 +22,11 @@ export const getSimiList = ({ id }: { id: string }) =>
 
 export const getSimiSongs = ({ id }: { id: string }) =>
   request(`/simi/song?id=${id}`) as Promise<any>;
+
+export const getSongUrl = ({ id }: { id: string }) =>
+  request(`/song/url?id=${id}`) as Promise<any>;
+
+export const getSongInList = ({ id, limit }: { id: string; limit?: number }) =>
+  request(
+    `/playlist/track/all?id=${id}${limit ? "&limit=" + limit : ""}`
+  ) as Promise<any>;

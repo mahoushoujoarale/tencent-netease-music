@@ -55,6 +55,6 @@ export function transfromTarget(target: number) {
   } else if (target === 0 || target === 3000) {
     return "";
   } else {
-    console.log("目标target出错");
+    // console.log("目标target出错");
   }
 }

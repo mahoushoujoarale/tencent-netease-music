@@ -53,7 +53,7 @@ const Login = (props: { handleCancel: any }) => {
         clearInterval(timeId);
         window.location.reload();
       } else if (code === 801) {
-        console.log(code);
+        // console.log(code);
       }
     }, 3000);
 
