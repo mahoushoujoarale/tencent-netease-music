@@ -3,17 +3,9 @@ import HomeBlockTitle from "../HomeBlockTitle/HomeBlockTitle";
 import { Carousel } from "antd";
 import { getAlbum } from "@/apis/home";
 import { Link } from "react-router-dom";
-import store from "@/store";
 import "./index.less";
-import { getAlbumDetail } from "@/apis/album";
 import { action } from "mobx";
-
-interface DataI {
-  name: string;
-  artist: string;
-  url: string;
-  cover: string;
-}
+import { resetPlaylistByAlbum } from "@/utils";
 
 const loop = [1, 2];
 
@@ -29,31 +21,6 @@ const HomeAlbum = () => {
 
     getData();
   }, []);
-
-  const resetPlaylist = async (id: string) => {
-    const data: DataI[] = [];
-
-    const { songs } = await getAlbumDetail({
-      id: id,
-    });
-
-    songs.map(
-      (item: {
-        name: string;
-        id: string;
-        al: { picUrl: string };
-        ar: { name: string }[];
-      }) =>
-        data.push({
-          name: item.name,
-          artist: item.ar[0].name,
-          url: `https://music.163.com/song/media/outer/url?id=${item.id}.mp3`,
-          cover: item.al.picUrl,
-        })
-    );
-
-    store.resetPlaylist(data);
-  };
 
   return (
     <div className="home-album">
@@ -83,7 +50,7 @@ const HomeAlbum = () => {
                               <span
                                 onClick={action((event) => {
                                   event?.preventDefault();
-                                  resetPlaylist(item.id);
+                                  resetPlaylistByAlbum(item.id);
                                 })}
                               ></span>
                             </Link>

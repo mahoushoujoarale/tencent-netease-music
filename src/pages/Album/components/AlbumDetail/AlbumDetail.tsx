@@ -5,17 +5,13 @@ import { useLocation, Link } from "react-router-dom";
 import MakeComments from "@/components/MakeComments/MakeComments";
 import Comments from "@/components/Comments/Comments";
 import Pagination from "@/components/Pagination/Pagination";
-import { formatDuration, formatTime } from "@/utils";
-import store from "@/store";
+import {
+  addToPlaylist,
+  formatDuration,
+  formatTime,
+  resetPlaylistByAlbum,
+} from "@/utils";
 import { action } from "mobx";
-import { getSongDetail } from "@/apis/song";
-
-interface DataI {
-  name: string;
-  artist: string;
-  url: string;
-  cover: string;
-}
 interface CommentInterface {
   beReplied: [];
   content: string;
@@ -98,45 +94,6 @@ const AlbumDetail = () => {
     });
   };
 
-  const resetPlaylist = async (id: string) => {
-    const data: DataI[] = [];
-
-    const { songs } = await getAlbumDetail({
-      id: id,
-    });
-
-    songs.map(
-      (item: {
-        name: string;
-        id: string;
-        al: { picUrl: string };
-        ar: { name: string }[];
-      }) =>
-        data.push({
-          name: item.name,
-          artist: item.ar[0].name,
-          url: `https://music.163.com/song/media/outer/url?id=${item.id}.mp3`,
-          cover: item.al.picUrl,
-        })
-    );
-
-    store.resetPlaylist(data);
-  };
-  const addToPlaylist = async (id: string) => {
-    const { songs } = await getSongDetail({
-      ids: id,
-    });
-
-    const data: DataI = {
-      name: songs[0].name,
-      artist: songs[0].ar[0].name,
-      url: `https://music.163.com/song/media/outer/url?id=${songs[0].id}.mp3`,
-      cover: songs[0].al.picUrl,
-    };
-
-    store.addToPlaylist(data);
-  };
-
   return (
     <>
       <div className="album-detail">
@@ -175,7 +132,7 @@ const AlbumDetail = () => {
               <div
                 className="play-button"
                 onClick={action(() => {
-                  resetPlaylist(albumDetail.album.id);
+                  resetPlaylistByAlbum(albumDetail.album.id);
                 })}
               >
                 播放

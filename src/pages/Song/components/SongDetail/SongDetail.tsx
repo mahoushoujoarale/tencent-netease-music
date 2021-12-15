@@ -5,8 +5,8 @@ import { useLocation, Link } from "react-router-dom";
 import MakeComments from "@/components/MakeComments/MakeComments";
 import Comments from "@/components/Comments/Comments";
 import Pagination from "@/components/Pagination/Pagination";
-import store from "@/store";
 import { action } from "mobx";
+import { addToPlaylist } from "@/utils";
 
 interface CommentInterface {
   beReplied: [];
@@ -21,12 +21,6 @@ interface CommentInterface {
   time: string;
   commentId: string;
   likedCount: number;
-}
-interface DataI {
-  name: string;
-  artist: string;
-  url: string;
-  cover: string;
 }
 
 const SongDetail = () => {
@@ -99,21 +93,6 @@ const SongDetail = () => {
       setSongComment(res);
       setCurrentPage(current);
     });
-  };
-
-  const addToPlaylist = async (id: string) => {
-    const { songs } = await getSongDetail({
-      ids: id,
-    });
-
-    const data: DataI = {
-      name: songs[0].name,
-      artist: songs[0].ar[0].name,
-      url: `https://music.163.com/song/media/outer/url?id=${songs[0].id}.mp3`,
-      cover: songs[0].al.picUrl,
-    };
-
-    store.addToPlaylist(data);
   };
 
   return (

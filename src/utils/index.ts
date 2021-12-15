@@ -1,3 +1,14 @@
+import { getSongDetail, getSongInList } from "@/apis/song";
+import store from "@/store";
+import { getAlbumDetail } from "@/apis/album";
+
+interface DataI {
+  name: string;
+  artist: string;
+  url: string;
+  cover: string;
+}
+
 // 转换歌曲时长
 export function formatDuration(propms: string) {
   let ms: number = parseInt(propms);
@@ -45,6 +56,7 @@ export function formatPlayCount(playCount: number) {
   }
 }
 
+// 首页轮播图的识别
 export function transfromTarget(target: number) {
   if (target === 1000) {
     return "playlist";
@@ -57,4 +69,70 @@ export function transfromTarget(target: number) {
   } else {
     // console.log("目标target出错");
   }
+}
+
+export async function resetPlaylist(id: string, limit?: number) {
+  const data: DataI[] = [];
+
+  const { songs } = await getSongInList({
+    id: id,
+    limit: limit,
+  });
+
+  songs.map(
+    (item: {
+      name: string;
+      id: string;
+      al: { picUrl: string };
+      ar: { name: string }[];
+    }) =>
+      data.push({
+        name: item.name,
+        artist: item.ar[0].name,
+        url: `https://music.163.com/song/media/outer/url?id=${item.id}.mp3`,
+        cover: item.al.picUrl,
+      })
+  );
+
+  store.resetPlaylist(data);
+}
+
+export async function resetPlaylistByAlbum(id: string) {
+  const data: DataI[] = [];
+
+  const { songs } = await getAlbumDetail({
+    id: id,
+  });
+
+  songs.map(
+    (item: {
+      name: string;
+      id: string;
+      al: { picUrl: string };
+      ar: { name: string }[];
+    }) =>
+      data.push({
+        name: item.name,
+        artist: item.ar[0].name,
+        url: `https://music.163.com/song/media/outer/url?id=${item.id}.mp3`,
+        cover: item.al.picUrl,
+      })
+  );
+
+  store.resetPlaylist(data);
+}
+
+export async function addToPlaylist(id: string) {
+  const { songs } = await getSongDetail({
+    ids: id,
+  });
+
+  const data: DataI = {
+    name: songs[0].name,
+    artist: songs[0].ar[0].name,
+    url: `https://music.163.com/song/media/outer/url?id=${songs[0].id}.mp3`,
+    cover: songs[0].al.picUrl,
+  };
+
+  store.addToPlaylist(data);
 }
