@@ -5,6 +5,7 @@ interface DataI {
   artist: string;
   url: string;
   cover: string;
+  lrc: string;
 }
 
 const store = makeAutoObservable({
@@ -14,7 +15,7 @@ const store = makeAutoObservable({
     return store.playlist;
   },
 
-  async addToPlaylist(data: DataI) {
+  addToPlaylist(data: DataI) {
     let dataIndex: number = store.playlist.findIndex(
       (item) => item.url === data.url
     );
@@ -33,6 +34,9 @@ const store = makeAutoObservable({
     runInAction(() => {
       store.playlist = [...data];
     });
+  },
+  clearPlaylist() {
+    store.playlist = [];
   },
 });
 

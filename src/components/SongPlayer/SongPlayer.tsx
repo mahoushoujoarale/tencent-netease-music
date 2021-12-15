@@ -4,14 +4,23 @@ import { useEffect, useState } from "react";
 import { Slider } from "antd";
 import { observer } from "mobx-react";
 import store from "@/store";
-import { reaction } from "mobx";
+import { action, reaction } from "mobx";
 
 interface aplayerI {
   skipBack: () => void;
   toggle: () => void;
   play: () => void;
   skipForward: () => void;
-  list: { clear: () => void; add: (audio: DataI[]) => void };
+  list: {
+    clear: () => void;
+    add: (audio: DataI[]) => void;
+    toggle: () => void;
+    hide: () => void;
+  };
+  lrc: {
+    hide: () => void;
+    toggle: () => void;
+  };
   paused: boolean;
   on: (event: string, handler: () => void) => void;
   volume: (value: number, nostorage: boolean) => void;
@@ -30,17 +39,22 @@ interface DataI {
 const SongPlayer = () => {
   const aplayerProps = {
     theme: "rgb(199, 12, 12)",
-    lrcType: 3,
+    lrcType: 1,
     audio: store.playlist,
   };
 
   const [mode, setMode] = useState(0);
+  const [showList, setShowList] = useState(false);
   const [aplayer, setAplayer] = useState<aplayerI>({
     skipBack: () => {},
     toggle: () => {},
     play: () => {},
     skipForward: () => {},
-    list: { clear: () => {}, add: () => {} },
+    list: { clear: () => {}, add: () => {}, toggle: () => {}, hide: () => {} },
+    lrc: {
+      hide: () => {},
+      toggle: () => {},
+    },
     paused: true,
     on: () => {},
     volume: () => {},
@@ -66,7 +80,14 @@ const SongPlayer = () => {
   useEffect(() => {
     aplayer.on("pause", () => setPaused(true));
     aplayer.on("play", () => setPaused(false));
+    aplayer.on("lrcshow", () => setShowList(true));
+    aplayer.on("lrchide", () => setShowList(false));
   }, [aplayer]);
+
+  useEffect(() => {
+    aplayer.lrc.hide();
+    aplayer.list.hide();
+  }, [aplayer.lrc, aplayer.list]);
 
   const changeMode = () => {
     const newMode = (mode + 1) % 3;
@@ -137,9 +158,43 @@ const SongPlayer = () => {
             title={mode === 0 ? "循环" : mode === 1 ? "随机" : "单曲循环"}
             onClick={() => changeMode()}
           ></div>
-          <div className="list" title="循环列表">
+          <div
+            className="list"
+            title="循环列表"
+            onClick={() => {
+              aplayer.list.toggle();
+              aplayer.lrc.toggle();
+              console.log(aplayer);
+            }}
+          >
             <div>{store.getPlaylist.length}</div>
           </div>
+        </div>
+        <div className="list-title" style={{ display: showList ? "" : "none" }}>
+          <div className="left">
+            <div className="title">播放列表({store.getPlaylist.length})</div>
+            <div className="right">
+              <div className="like-all">
+                <span></span>收藏全部
+              </div>
+              <div
+                className="remove"
+                onClick={action(() => {
+                  aplayer.list.clear();
+                  store.clearPlaylist();
+                })}
+              >
+                <span></span>清除
+              </div>
+            </div>
+          </div>
+          <div
+            className="close"
+            onClick={() => {
+              aplayer.list.hide();
+              aplayer.lrc.hide();
+            }}
+          ></div>
         </div>
       </div>
     </div>

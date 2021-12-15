@@ -1,12 +1,14 @@
 import { getSongDetail, getSongInList } from "@/apis/song";
 import store from "@/store";
 import { getAlbumDetail } from "@/apis/album";
+import { getLyric } from "./../apis/song";
 
 interface DataI {
   name: string;
   artist: string;
   url: string;
   cover: string;
+  lrc: string;
 }
 
 // 转换歌曲时长
@@ -71,6 +73,7 @@ export function transfromTarget(target: number) {
   }
 }
 
+// 通过歌单id获取音乐添加到播放列表
 export async function resetPlaylist(id: string, limit?: number) {
   const data: DataI[] = [];
 
@@ -91,12 +94,14 @@ export async function resetPlaylist(id: string, limit?: number) {
         artist: item.ar[0].name,
         url: `https://music.163.com/song/media/outer/url?id=${item.id}.mp3`,
         cover: item.al.picUrl,
+        lrc: "",
       })
   );
 
   store.resetPlaylist(data);
 }
 
+// 通过专辑id获取音乐添加到播放列表
 export async function resetPlaylistByAlbum(id: string) {
   const data: DataI[] = [];
 
@@ -104,7 +109,7 @@ export async function resetPlaylistByAlbum(id: string) {
     id: id,
   });
 
-  songs.map(
+  await songs.map(
     (item: {
       name: string;
       id: string;
@@ -116,15 +121,22 @@ export async function resetPlaylistByAlbum(id: string) {
         artist: item.ar[0].name,
         url: `https://music.163.com/song/media/outer/url?id=${item.id}.mp3`,
         cover: item.al.picUrl,
+        lrc: "",
       })
   );
 
   store.resetPlaylist(data);
 }
 
+// 添加单支歌曲到播放列表
 export async function addToPlaylist(id: string) {
   const { songs } = await getSongDetail({
     ids: id,
+  });
+  const {
+    lrc: { lyric },
+  } = await getLyric({
+    id: id,
   });
 
   const data: DataI = {
@@ -132,6 +144,7 @@ export async function addToPlaylist(id: string) {
     artist: songs[0].ar[0].name,
     url: `https://music.163.com/song/media/outer/url?id=${songs[0].id}.mp3`,
     cover: songs[0].al.picUrl,
+    lrc: lyric,
   };
 
   store.addToPlaylist(data);
