@@ -15,8 +15,18 @@ const store = makeAutoObservable({
   },
 
   async addToPlaylist(data: DataI) {
+    let dataIndex: number = store.playlist.findIndex(
+      (item) => item.url === data.url
+    );
     runInAction(() => {
-      store.playlist = [data, ...store.playlist];
+      if (dataIndex !== -1) {
+        store.playlist = [
+          ...store.playlist.slice(dataIndex),
+          ...store.playlist.slice(0, dataIndex),
+        ];
+      } else {
+        store.playlist = [data, ...store.playlist];
+      }
     });
   },
   resetPlaylist(data: DataI[]) {

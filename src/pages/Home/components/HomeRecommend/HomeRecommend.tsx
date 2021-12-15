@@ -32,7 +32,6 @@ const HomeRecommend = () => {
 
     const { songs } = await getSongInList({
       id: id,
-      limit: 10,
     });
 
     songs.map(

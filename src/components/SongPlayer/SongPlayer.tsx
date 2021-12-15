@@ -13,6 +13,7 @@ interface aplayerI {
   skipForward: () => void;
   list: { clear: () => void; add: (audio: DataI[]) => void };
   paused: boolean;
+  on: (event: string, handler: () => void) => void;
   volume: (value: number, nostorage: boolean) => void;
   options: {
     loop: string;
@@ -41,6 +42,7 @@ const SongPlayer = () => {
     skipForward: () => {},
     list: { clear: () => {}, add: () => {} },
     paused: true,
+    on: () => {},
     volume: () => {},
     options: {
       loop: "",
@@ -62,9 +64,9 @@ const SongPlayer = () => {
   );
 
   useEffect(() => {
-    setPaused(aplayer.paused);
-    // console.log(1);
-  }, [aplayer.paused]);
+    aplayer.on("pause", () => setPaused(true));
+    aplayer.on("play", () => setPaused(false));
+  }, [aplayer]);
 
   const changeMode = () => {
     const newMode = (mode + 1) % 3;
@@ -94,7 +96,6 @@ const SongPlayer = () => {
             title="暂停/播放"
             onClick={() => {
               aplayer.toggle();
-              console.log(aplayer);
             }}
           ></div>
           <div

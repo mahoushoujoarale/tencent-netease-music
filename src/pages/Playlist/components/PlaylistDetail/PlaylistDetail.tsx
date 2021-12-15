@@ -108,7 +108,6 @@ const PlaylistDetail = () => {
 
     const { songs } = await getSongInList({
       id: id,
-      limit: 10,
     });
 
     songs.map(
