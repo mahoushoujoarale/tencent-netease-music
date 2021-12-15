@@ -168,7 +168,6 @@ const SongPlayer = () => {
             onClick={() => {
               aplayer.list.toggle();
               aplayer.lrc.toggle();
-              console.log(aplayer);
             }}
           >
             <div>{store.getPlaylist.length}</div>
