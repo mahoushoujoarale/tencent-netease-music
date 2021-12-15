@@ -22,7 +22,8 @@ const store = makeAutoObservable({
     runInAction(() => {
       if (dataIndex !== -1) {
         store.playlist = [
-          ...store.playlist.slice(dataIndex),
+          data,
+          ...store.playlist.slice(dataIndex + 1),
           ...store.playlist.slice(0, dataIndex),
         ];
       } else {

@@ -45,6 +45,7 @@ const SongPlayer = () => {
 
   const [mode, setMode] = useState(0);
   const [showList, setShowList] = useState(false);
+  const [lockbar, setLockbar] = useState(false);
   const [aplayer, setAplayer] = useState<aplayerI>({
     skipBack: () => {},
     toggle: () => {},
@@ -104,7 +105,10 @@ const SongPlayer = () => {
   };
 
   return (
-    <div className="song-player">
+    <div
+      className="song-player"
+      style={{ transform: lockbar ? "translateY(0)" : "" }}
+    >
       <div className="center">
         <div className="buttons">
           <div
@@ -194,6 +198,15 @@ const SongPlayer = () => {
               aplayer.list.hide();
               aplayer.lrc.hide();
             }}
+          ></div>
+        </div>
+      </div>
+      <div className="lock-bar">
+        <div className="lock-box">
+          <div
+            className="lock"
+            style={{ backgroundPositionX: lockbar ? "" : "-80px" }}
+            onClick={() => setLockbar(!lockbar)}
           ></div>
         </div>
       </div>
