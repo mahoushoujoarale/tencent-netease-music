@@ -7,6 +7,7 @@ import Album from "@/pages/Album/Album";
 import Playlist from "@/pages/Playlist/Playlist";
 import NotFound from "../components/NotFound/NotFound";
 import DJRadio from "@/pages/DJRadio/DJRadio"
+import TopPlayList from "@/pages/TopPlaylist/TopPlaylist";
 
 const MainRouter = () => (
   <>
@@ -18,12 +19,12 @@ const MainRouter = () => (
       />
       <Route path="/discovery/recommend" element={<Home />} />
       <Route path="/discovery/djradio" element={<DJRadio />} />
+      <Route path="/discovery/playlist" element={<TopPlayList />}/>
       <Route path="friend" element={<Friend />} />
       <Route path="mine" element={<Mine />} />
       <Route path="song" element={<Song />} />
       <Route path="album" element={<Album />} />
       <Route path="playlist" element={<Playlist />} />
-      
       <Route path="*" element={<NotFound />} />
     </Routes>
   </>
