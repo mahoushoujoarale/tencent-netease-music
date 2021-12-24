@@ -215,7 +215,7 @@ const AlbumDetail = () => {
                       <Link to={`/song?id=${item.id}`} className="link-to-song">
                         {item.name}
                       </Link>
-                      {item.alia.length > 0
+                      {item.alia
                         ? " - (" +
                           (item.alia || []).map(
                             (alia: string, aliaIndex: number) => (
@@ -275,7 +275,7 @@ const AlbumDetail = () => {
       <div className="album-comments">
         <MakeComments />
 
-        {albumComment.hotComments.length > 0 ? (
+        {albumComment.hotComments ? (
           <>
             <div className="album-comment-title">精彩评论</div>
             {(albumComment.hotComments || []).map((item: CommentInterface) => (
@@ -285,12 +285,12 @@ const AlbumDetail = () => {
         ) : (
           ""
         )}
-        {albumComment.comments.length > 0 ? (
+        {albumComment.comments ? (
           <>
             <div
               className="album-comment-title"
               style={{
-                display: albumComment.hotComments.length > 0 ? "" : "none",
+                display: albumComment.hotComments ? "" : "none",
               }}
             >
               最新评论(

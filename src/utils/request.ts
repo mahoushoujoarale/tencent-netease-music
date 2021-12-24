@@ -1,8 +1,8 @@
 import axios from "axios";
 import { message } from "antd";
 
-export const BaseURL: string = "http://localhost:3000";
- //export const BaseURL: string = "httpa://47.98.238.202:4000";
+// export const BaseURL: string = "http://localhost:4000";
+export const BaseURL: string = "http://47.98.238.202:4000";
 
 axios.defaults.baseURL = BaseURL;
 

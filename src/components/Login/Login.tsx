@@ -40,8 +40,6 @@ const Login = (props: { handleCancel: any }) => {
         key: qrKey,
       });
 
-      console.log(code, cookie);
-
       setQrState(code);
 
       if (code === 800) {
@@ -51,6 +49,7 @@ const Login = (props: { handleCancel: any }) => {
         console.log("等待确认");
       } else if (code === 803) {
         clearInterval(timeId);
+        document.cookie = cookie;
         window.location.reload();
       } else if (code === 801) {
         // console.log(code);
