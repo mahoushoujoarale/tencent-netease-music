@@ -1,0 +1,66 @@
+&>.item {
+    width: 140px;
+    height: 180px;
+
+    .content {
+        width: 100%;
+        height: 140px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: relative;
+
+        .bottom {
+            width: 100%;
+            height: 27px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            cursor: auto;
+            background: url("../../../../assets/images/coverall.png") no-repeat 0 -537px;
+
+            .count {
+                font-size: 12px;
+                color: #cccccc;
+                margin-top: 5px;
+
+                &::before {
+                    content: '';
+                    display: inline-block;
+                    width: 14px;
+                    height: 11px;
+                    margin: 0 5px 0 10px;
+                    transform: translateY(1px);
+                    background: url("../../../../assets/images/iconall.png") no-repeat 0 -24px;
+                }
+            }
+
+            .play {
+                position: absolute;
+                right: 10px;
+                bottom: 5px;
+                width: 16px;
+                height: 17px;
+                cursor: pointer;
+                background: url("../../../../assets/images/iconall.png") no-repeat 0 0;
+
+                &:hover {
+                    background-position: 0 -60px;
+                }
+            }
+        }
+    }
+
+    .name {
+        font-size: 14px;
+        color: #000000;
+        line-height: 20px;
+        height: 60px;
+        margin-top: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:hover {
+            text-decoration: #000000 underline;
+        }
+    }
+}
