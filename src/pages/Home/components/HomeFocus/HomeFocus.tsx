@@ -44,7 +44,7 @@ const HomeFocus = () => {
           beforeChange={useCallback((from, to) => setCurrentIndex(to), [])}
           ref={bannerRef}
         >
-          {carouselList.map(
+          {(carouselList || []).map(
             (item: {
               targetId: string;
               imageUrl: string;

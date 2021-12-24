@@ -5,17 +5,24 @@ import { Slider } from "antd";
 import { observer } from "mobx-react";
 import store from "@/store";
 import { action, reaction } from "mobx";
+import { getLyric } from "../../apis/song";
+import { useNavigate } from "react-router-dom";
 
 interface aplayerI {
   skipBack: () => void;
   toggle: () => void;
   play: () => void;
+  seek: (time: number) => void;
   skipForward: () => void;
   list: {
     clear: () => void;
+    remove: (index: number) => void;
+    switch: (index: number) => void;
     add: (audio: DataI[]) => void;
     toggle: () => void;
     hide: () => void;
+    audios: DataI[];
+    index: number;
   };
   lrc: {
     hide: () => void;
@@ -34,15 +41,19 @@ interface DataI {
   artist: string;
   url: string;
   cover: string;
+  lrc: string;
+  id: string;
 }
 
-const SongPlayer = () => {
-  const aplayerProps = {
-    theme: "rgb(199, 12, 12)",
-    lrcType: 1,
-    audio: store.playlist,
-  };
+let currentID = "";
 
+const aplayerProps = {
+  theme: "rgb(199, 12, 12)",
+  lrcType: 1,
+  audio: store.playlist,
+};
+
+const SongPlayer = () => {
   const [mode, setMode] = useState(0);
   const [showList, setShowList] = useState(false);
   const [lockbar, setLockbar] = useState(false);
@@ -50,8 +61,18 @@ const SongPlayer = () => {
     skipBack: () => {},
     toggle: () => {},
     play: () => {},
+    seek: () => {},
     skipForward: () => {},
-    list: { clear: () => {}, add: () => {}, toggle: () => {}, hide: () => {} },
+    list: {
+      clear: () => {},
+      add: () => {},
+      toggle: () => {},
+      hide: () => {},
+      remove: () => {},
+      switch: () => {},
+      audios: [],
+      index: 0,
+    },
     lrc: {
       hide: () => {},
       toggle: () => {},
@@ -78,11 +99,51 @@ const SongPlayer = () => {
     }
   );
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const picDom: HTMLElement = document.getElementsByClassName(
+      "aplayer-button"
+    )[0] as HTMLElement;
+
+    picDom.onclick = (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+      if (store.playlist.length) {
+        navigate(`/song?id=${currentID}`);
+      }
+    };
+  }, [navigate]);
+
   useEffect(() => {
     aplayer.on("pause", () => setPaused(true));
     aplayer.on("play", () => setPaused(false));
     aplayer.on("lrcshow", () => setShowList(true));
     aplayer.on("lrchide", () => setShowList(false));
+    aplayer.on("canplay", () => {
+      const index = aplayer.list.index;
+
+      currentID = aplayer.list.audios[index].id;
+    });
+    aplayer.on(
+      "canplay",
+      action(async () => {
+        const index = aplayer.list.index;
+
+        if (aplayer.list.audios[index].lrc !== "") return;
+        else {
+          const {
+            lrc: { lyric },
+          } = await getLyric({
+            id: aplayer.list.audios[index].id,
+          });
+
+          store.playlist[index].lrc = lyric;
+          store.playlist = [...store.playlist];
+          aplayer.list.switch(index);
+        }
+      })
+    );
   }, [aplayer]);
 
   useEffect(() => {
@@ -107,7 +168,7 @@ const SongPlayer = () => {
   return (
     <div
       className="song-player"
-      style={{ transform: lockbar ? "translateY(0)" : "" }}
+      style={{ transform: !lockbar && !showList ? "" : "translateY(0)" }}
     >
       <div className="center">
         <div className="buttons">
@@ -183,6 +244,7 @@ const SongPlayer = () => {
               <div
                 className="remove"
                 onClick={action(() => {
+                  aplayer.seek(0);
                   aplayer.list.clear();
                   store.clearPlaylist();
                 })}

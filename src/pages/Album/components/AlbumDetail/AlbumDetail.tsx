@@ -106,11 +106,13 @@ const AlbumDetail = () => {
           <div className="right">
             <div className="album-name">{albumDetail.album.name}</div>
             <div className="album-alias">
-              {albumDetail.album.alias.map((item: string, index: number) => (
-                <div className="album-alias-item" key={index}>
-                  {item}
-                </div>
-              ))}
+              {(albumDetail.album.alias || []).map(
+                (item: string, index: number) => (
+                  <div className="album-alias-item" key={index}>
+                    {item}
+                  </div>
+                )
+              )}
             </div>
             <div className="album-singer">
               歌手：
@@ -152,7 +154,7 @@ const AlbumDetail = () => {
         <div className="album-desc" style={{ maxHeight: fold ? "" : "none" }}>
           <div className="desc-title">专辑介绍:</div>
           <div className="desc-content">
-            {desc.map((item: string, index: number) => (
+            {(desc || []).map((item: string, index: number) => (
               <p key={index}>{item}</p>
             ))}
           </div>
@@ -191,7 +193,7 @@ const AlbumDetail = () => {
               </tr>
             </thead>
             <tbody>
-              {albumDetail.songs.map(
+              {(albumDetail.songs || []).map(
                 (
                   item: {
                     name: string;
@@ -215,9 +217,11 @@ const AlbumDetail = () => {
                       </Link>
                       {item.alia.length > 0
                         ? " - (" +
-                          item.alia.map((alia: string, aliaIndex: number) => (
-                            <span key={aliaIndex}>{alia}</span>
-                          )) +
+                          (item.alia || []).map(
+                            (alia: string, aliaIndex: number) => (
+                              <span key={aliaIndex}>{alia}</span>
+                            )
+                          ) +
                           ")"
                         : ""}
                     </td>
@@ -236,7 +240,7 @@ const AlbumDetail = () => {
                       </div>
                     </td>
                     <td className="td4">
-                      {item.ar.map(
+                      {(item.ar || []).map(
                         (
                           artist: { id: string; name: string; tns: [] },
                           arIndex: number
@@ -250,7 +254,7 @@ const AlbumDetail = () => {
                             </Link>
                             {artist.tns
                               ? " - (" +
-                                artist.tns.map(
+                                (artist.tns || []).map(
                                   (tn: string, tnIndex: number) => (
                                     <span key={tnIndex}>{tn}</span>
                                   )
@@ -274,7 +278,7 @@ const AlbumDetail = () => {
         {albumComment.hotComments.length > 0 ? (
           <>
             <div className="album-comment-title">精彩评论</div>
-            {albumComment.hotComments.map((item: CommentInterface) => (
+            {(albumComment.hotComments || []).map((item: CommentInterface) => (
               <Comments key={item.commentId} commentInfo={item} />
             ))}
           </>
@@ -292,7 +296,7 @@ const AlbumDetail = () => {
               最新评论(
               {albumComment.total})
             </div>
-            {albumComment.comments.map((item: CommentInterface) => (
+            {(albumComment.comments || []).map((item: CommentInterface) => (
               <Comments key={item.commentId} commentInfo={item} />
             ))}
             <div className="album-pagination">

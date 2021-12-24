@@ -11,7 +11,6 @@ const onLogOutClick = async () => {
   await logOut().then((res) => {
     console.log(res);
   });
-  document.cookie = "";
 
   window.location.reload();
 };
@@ -24,10 +23,15 @@ const Header = () => {
     nickname: "",
     avatarUrl: "",
   });
+  const [loginState, setLoginState] = useState(false);
 
   useEffect(() => {
     async function getData() {
       const { profile } = await getUserAccount();
+
+      if (profile) {
+        setLoginState(true);
+      }
 
       setUserInfo(profile);
     }
@@ -85,7 +89,7 @@ const Header = () => {
             <Link to="/creatorcenter" className="creator">
               创作者中心
             </Link>
-            {userInfo ? (
+            {loginState ? (
               <div className="header-user-photo">
                 <img src={userInfo.avatarUrl} alt="avatar" />
                 <div className="user-pane">

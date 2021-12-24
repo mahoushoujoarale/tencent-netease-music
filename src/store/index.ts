@@ -6,6 +6,7 @@ interface DataI {
   url: string;
   cover: string;
   lrc: string;
+  id: string;
 }
 
 const store = makeAutoObservable({

@@ -11,6 +11,7 @@ const HomeLoginBox = () => {
     nickname: "",
     avatarUrl: "",
   });
+  const [loginState, setLoginState] = useState(false);
   const [userDetail, setUserDetail] = useState({
     level: 0,
     profile: {
@@ -28,6 +29,7 @@ const HomeLoginBox = () => {
         const data = await getUserDetail({ id: profile.userId });
 
         setUserDetail(data);
+        setLoginState(true);
       }
       setUserInfo(profile);
     }
@@ -45,7 +47,7 @@ const HomeLoginBox = () => {
       ) : (
         ""
       )}
-      {userInfo ? (
+      {loginState ? (
         <div className="home-login-user-pane">
           <div className="top">
             <Link

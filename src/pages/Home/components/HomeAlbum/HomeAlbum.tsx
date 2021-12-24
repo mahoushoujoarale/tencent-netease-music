@@ -31,45 +31,43 @@ const HomeAlbum = () => {
             return (
               <div key={index}>
                 <ul className="album-container">
-                  {albums
-                    .slice(index, index + 5)
-                    .map(
-                      (item: {
-                        id: string;
-                        name: string;
-                        picUrl: string;
-                        artist: { id: string; name: string };
-                      }) => {
-                        return (
-                          <li key={item.id} className="album-card">
-                            <Link
-                              to={`/album?id=${item.id}`}
-                              className="album-img"
-                            >
-                              <img src={item.picUrl} alt="封面" />
-                              <span
-                                onClick={action((event) => {
-                                  event?.preventDefault();
-                                  resetPlaylistByAlbum(item.id);
-                                })}
-                              ></span>
-                            </Link>
-                            <Link
-                              to={`/album?id=${item.id}`}
-                              className="album-title"
-                            >
-                              {item.name}
-                            </Link>
-                            <Link
-                              to={`/artist?id=${item.artist.id}`}
-                              className="artist-name"
-                            >
-                              {item.artist.name}
-                            </Link>
-                          </li>
-                        );
-                      }
-                    )}
+                  {(albums.slice(index, index + 5) || []).map(
+                    (item: {
+                      id: string;
+                      name: string;
+                      picUrl: string;
+                      artist: { id: string; name: string };
+                    }) => {
+                      return (
+                        <li key={item.id} className="album-card">
+                          <Link
+                            to={`/album?id=${item.id}`}
+                            className="album-img"
+                          >
+                            <img src={item.picUrl} alt="封面" />
+                            <span
+                              onClick={action((event) => {
+                                event?.preventDefault();
+                                resetPlaylistByAlbum(item.id);
+                              })}
+                            ></span>
+                          </Link>
+                          <Link
+                            to={`/album?id=${item.id}`}
+                            className="album-title"
+                          >
+                            {item.name}
+                          </Link>
+                          <Link
+                            to={`/artist?id=${item.artist.id}`}
+                            className="artist-name"
+                          >
+                            {item.artist.name}
+                          </Link>
+                        </li>
+                      );
+                    }
+                  )}
                 </ul>
               </div>
             );

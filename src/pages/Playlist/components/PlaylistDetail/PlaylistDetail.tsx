@@ -157,11 +157,13 @@ const PlaylistDetail = () => {
             </div>
             <div className="tags">
               标签：
-              {playlistDetail.tags.map((item: string, index: number) => (
-                <div key={index} className="tag">
-                  {item}
-                </div>
-              ))}
+              {(playlistDetail.tags || []).map(
+                (item: string, index: number) => (
+                  <div key={index} className="tag">
+                    {item}
+                  </div>
+                )
+              )}
             </div>
             <div
               className="playlist-desc"
@@ -213,7 +215,7 @@ const PlaylistDetail = () => {
               </tr>
             </thead>
             <tbody>
-              {playlistDetail.tracks.map(
+              {(playlistDetail.tracks || []).map(
                 (
                   item: {
                     name: string;
@@ -251,7 +253,7 @@ const PlaylistDetail = () => {
                       </div>
                     </td>
                     <td className="td4">
-                      {item.ar.map(
+                      {(item.ar || []).map(
                         (
                           artist: { id: string; name: string; tns: [] },
                           arIndex: number
@@ -293,9 +295,11 @@ const PlaylistDetail = () => {
         {playlistComment.hotComments ? (
           <>
             <div className="playlist-comment-title">精彩评论</div>
-            {playlistComment.hotComments.map((item: CommentInterface) => (
-              <Comments key={item.commentId} commentInfo={item} />
-            ))}
+            {(playlistComment.hotComments || []).map(
+              (item: CommentInterface) => (
+                <Comments key={item.commentId} commentInfo={item} />
+              )
+            )}
           </>
         ) : (
           ""
@@ -307,7 +311,7 @@ const PlaylistDetail = () => {
           最新评论(
           {playlistComment.total})
         </div>
-        {playlistComment.comments.map((item: CommentInterface) => (
+        {(playlistComment.comments || []).map((item: CommentInterface) => (
           <Comments key={item.commentId} commentInfo={item} />
         ))}
         <div className="playlist-pagination">

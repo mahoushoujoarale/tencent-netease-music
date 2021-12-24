@@ -20,7 +20,7 @@ const HomeAnchor = () => {
       <div className="container">
         <div className="top">热门主播</div>
         <div className="items">
-          {list.map(
+          {(list || []).map(
             (item: { id: string; avatarUrl: string; nickName: string }) => {
               return (
                 <div className="item" key={item.id}>

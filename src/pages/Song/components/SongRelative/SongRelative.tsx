@@ -37,7 +37,7 @@ const SongRelative = () => {
     <div className="song-relative">
       <div className="simi-list-container">
         <div className="title">包含这首歌的歌单</div>
-        {simiList.map(
+        {(simiList || []).map(
           (item: {
             name: string;
             id: number;
@@ -66,33 +66,37 @@ const SongRelative = () => {
       </div>
       <div className="simi-songs-container">
         <div className="title">相似歌曲</div>
-        {simiSongs.map((item: { id: string; name: string; artists: [] }) => (
-          <div key={item.id} className="item">
-            <div className="left">
-              <Link to={`/song?id=${item.id}`} className="song-name">
-                {item.name}
-              </Link>
-              <div className="song-singer">
-                {item.artists.map((ast: { id: string; name: string }) => (
-                  <Link
-                    key={ast.id}
-                    to={`artist?id=${ast.id}`}
-                    className="artist-link"
-                  >
-                    {ast.name}
-                  </Link>
-                ))}
+        {(simiSongs || []).map(
+          (item: { id: string; name: string; artists: [] }) => (
+            <div key={item.id} className="item">
+              <div className="left">
+                <Link to={`/song?id=${item.id}`} className="song-name">
+                  {item.name}
+                </Link>
+                <div className="song-singer">
+                  {(item.artists || []).map(
+                    (ast: { id: string; name: string }) => (
+                      <Link
+                        key={ast.id}
+                        to={`artist?id=${ast.id}`}
+                        className="artist-link"
+                      >
+                        {ast.name}
+                      </Link>
+                    )
+                  )}
+                </div>
+              </div>
+              <div className="right">
+                <div
+                  className="play"
+                  onClick={action(() => addToPlaylist(item.id))}
+                ></div>
+                <div className="add-to-list"></div>
               </div>
             </div>
-            <div className="right">
-              <div
-                className="play"
-                onClick={action(() => addToPlaylist(item.id))}
-              ></div>
-              <div className="add-to-list"></div>
-            </div>
-          </div>
-        ))}
+          )
+        )}
       </div>
       <DownloadApps />
       <Link to={`/wiki/song?songId=${songID}&type=1`} className="add-more-info">
