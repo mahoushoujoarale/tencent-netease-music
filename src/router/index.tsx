@@ -8,6 +8,7 @@ import Playlist from "@/pages/Playlist/Playlist";
 import NotFound from "../components/NotFound/NotFound";
 import DJRadio from "@/pages/DJRadio/DJRadio"
 import TopPlayList from "@/pages/TopPlaylist/TopPlaylist";
+import SearchPage from "@/pages/SearchPage/SearchPage";
 
 const MainRouter = () => (
   <>
@@ -20,6 +21,7 @@ const MainRouter = () => (
       <Route path="/discovery/recommend" element={<Home />} />
       <Route path="/discovery/djradio" element={<DJRadio />} />
       <Route path="/discovery/playlist" element={<TopPlayList />}/>
+      <Route path="search" element={<SearchPage />}/>
       <Route path="friend" element={<Friend />} />
       <Route path="mine" element={<Mine />} />
       <Route path="song" element={<Song />} />

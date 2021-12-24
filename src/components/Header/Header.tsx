@@ -5,6 +5,7 @@ import { NavLink, Link } from "react-router-dom";
 import { getUserAccount } from "@/apis/user";
 import Login from "../Login/Login";
 import { logOut } from "@/apis/login";
+import Search from "../Search/Search";
 
 const onLogOutClick = async () => {
   console.log("logout");
@@ -79,9 +80,7 @@ const Header = () => {
                 }
               )}
             </ul>
-            <div className="search">
-              <input type="text" placeholder="音乐/视频/电台/用户" />
-            </div>
+            <Search />
             <Link to="/creatorcenter" className="creator">
               创作者中心
             </Link>
