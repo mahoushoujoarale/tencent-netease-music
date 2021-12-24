@@ -24,7 +24,7 @@ const HomeSinger = () => {
           </Link>
         </div>
         <div className="items">
-          {list.map(
+          {(list || []).map(
             (item: {
               id: string;
               picUrl: string;

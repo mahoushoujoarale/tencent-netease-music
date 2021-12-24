@@ -48,9 +48,8 @@ const Login = (props: { handleCancel: any }) => {
       } else if (code === 802) {
         console.log("等待确认");
       } else if (code === 803) {
-        document.cookie = JSON.stringify(cookie);
-
         clearInterval(timeId);
+        document.cookie = cookie;
         window.location.reload();
       } else if (code === 801) {
         // console.log(code);

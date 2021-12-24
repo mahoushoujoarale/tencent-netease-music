@@ -110,7 +110,7 @@ const SongDetail = () => {
           <div className="song-name">{songDetail.name}</div>
           <div className="song-singer">
             歌手：
-            {songDetail.ar.map((item: { name: string; id: string }) => {
+            {(songDetail.ar || []).map((item: { name: string; id: string }) => {
               return (
                 <Link to={`/artist?id=${item.id}`} key={item.id}>
                   {item.name}
@@ -139,7 +139,7 @@ const SongDetail = () => {
           </div>
           <div className="lyric" style={{ maxHeight: fold ? "" : "none" }}>
             <div className="lyric-content">
-              {lyric.map((item: string, index: number) => (
+              {(lyric || []).map((item: string, index: number) => (
                 <p key={index}>{item}</p>
               ))}
             </div>
@@ -167,7 +167,7 @@ const SongDetail = () => {
         {songComment.hotComments ? (
           <>
             <div className="song-comment-title">精彩评论</div>
-            {songComment.hotComments.map((item: CommentInterface) => (
+            {(songComment.hotComments || []).map((item: CommentInterface) => (
               <Comments key={item.commentId} commentInfo={item} />
             ))}
           </>
@@ -181,7 +181,7 @@ const SongDetail = () => {
           最新评论(
           {songComment.total})
         </div>
-        {songComment.comments.map((item: CommentInterface) => (
+        {(songComment.comments || []).map((item: CommentInterface) => (
           <Comments key={item.commentId} commentInfo={item} />
         ))}
         <div className="song-pagination">

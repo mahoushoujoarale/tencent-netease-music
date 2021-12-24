@@ -9,6 +9,7 @@ interface DataI {
   url: string;
   cover: string;
   lrc: string;
+  id: string;
 }
 
 // 转换歌曲时长
@@ -95,6 +96,7 @@ export async function resetPlaylist(id: string, limit?: number) {
         url: `https://music.163.com/song/media/outer/url?id=${item.id}.mp3`,
         cover: item.al.picUrl,
         lrc: "",
+        id: item.id,
       })
   );
 
@@ -122,6 +124,7 @@ export async function resetPlaylistByAlbum(id: string) {
         url: `https://music.163.com/song/media/outer/url?id=${item.id}.mp3`,
         cover: item.al.picUrl,
         lrc: "",
+        id: item.id,
       })
   );
 
@@ -145,6 +148,7 @@ export async function addToPlaylist(id: string) {
     url: `https://music.163.com/song/media/outer/url?id=${songs[0].id}.mp3`,
     cover: songs[0].al.picUrl,
     lrc: lyric,
+    id: id,
   };
 
   store.addToPlaylist(data);

@@ -37,7 +37,7 @@ const PlaylistRelative = () => {
     <div className="playlist-relative">
       <div className="title">喜欢这个歌单的人</div>
       <div className="playlist-subscriber-container">
-        {subscribers.map(
+        {(subscribers || []).map(
           (item: { userId: string; nickname: string; avatarUrl: string }) => (
             <Link
               to={`/user/home?id=${item.userId}`}
@@ -52,7 +52,7 @@ const PlaylistRelative = () => {
       </div>
       <div className="title">热门歌单</div>
       <div className="related-playlist-container">
-        {relatedPlaylistList.map(
+        {(relatedPlaylistList || []).map(
           (item: {
             name: string;
             id: number;

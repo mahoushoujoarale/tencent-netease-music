@@ -62,7 +62,7 @@ const Comments = (props: {
           className="reply-box"
           style={{ display: props.commentInfo.beReplied.length ? "" : "none" }}
         >
-          {props.commentInfo.beReplied.map(
+          {(props.commentInfo.beReplied || []).map(
             (item: {
               beRepliedCommentId: string;
               content: string;

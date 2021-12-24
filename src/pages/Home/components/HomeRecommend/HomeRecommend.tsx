@@ -32,7 +32,7 @@ const HomeRecommend = () => {
         href="/discover/playlist"
       />
       <ul className="list">
-        {list.map(
+        {(list || []).map(
           (item: {
             id: string;
             picUrl: string;

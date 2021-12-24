@@ -296,7 +296,7 @@
         position: fixed;
         display: flex;
         justify-content: flex-end;
-        bottom: 47px;
+        bottom: 45px;
 
         &>.lock-box {
             width: 52px;
@@ -353,7 +353,21 @@
             }
 
             &>.aplayer-button {
-                display: none;
+                width: 100%;
+                height: 100%;
+                background: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                border: none;
+                margin: 0;
+                z-index: 1;
+
+                &>svg {
+                    display: none;
+                }
             }
         }
 
@@ -483,12 +497,12 @@
 
         &>ol {
             &>li {
-                height: 28px;
-                line-height: 28px;
+                height: 33px;
+                line-height: 33px;
                 border: 0;
                 color: #cccccc;
                 background: transparent;
-                font-size: 12px;
+                font-size: 13px;
                 padding: 0 30px;
 
                 &:hover {
