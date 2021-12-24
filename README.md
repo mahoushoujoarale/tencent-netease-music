@@ -1,46 +1,73 @@
-# Getting Started with Create React App
+# React Netease Music
+React Netease Music——一个基于React、TypeScript的高仿网易云音乐web端。
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+本项目是2021年腾讯文档与华中科技大学计算机学院校企联合课程最终的项目作业，小组成员包括组长赵桀，以及两位组员刘苡辛和王艳。
 
-## Available Scripts
+## 项目体验地址
+[高仿网易云音乐播放器在线地址](http://www.arale.club)
 
-In the project directory, you can run:
+## 功能列表
+- [x] 登录/登出（目前仅支持手机扫码登录）
+- [x] 发现页
+  - [x] banner
+  - [x] 推荐歌单
+  - [x] 推荐最新音乐
+  - [x] 推荐专辑
+- [x] 歌单详情页
+- [x] 歌曲详情页
+- [x] 专辑详情页
+- [x] 评论展示
+- [x] 分页功能
+- [x] 歌曲播放详情页
+  - [x] 播放列表
+  - [x] 歌词滚动
+  - [x] 播放相关功能
 
-### `yarn start`
+注意：部分歌曲可能由于版权问题无法播放。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 技术栈
+- React
+- TypeScript
+- Restful
+- less
+- react-router
+- mobx
+- antd
+- axios
+- create-react-app
+- webpack
+- eslint
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## API接口
+- [NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)
 
-### `yarn test`
+## 实现的相关截图
+![01_首页](./pictures/首页.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![02_扫码登录](./pictures/扫码登录.png)
 
-### `yarn build`
+![03_播放器](./pictures/播放器.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![04_歌曲详情](./pictures/歌曲详情.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![05_歌单详情](./pictures/歌单详情.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![06_专辑详情](./pictures/专辑详情.png)
 
-### `yarn eject`
+![07_评论详情](./pictures/评论详情.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![08_分页功能](./pictures/分页功能.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 项目启动
+- 首先将上面👆提到的API接口拉到本地，跑在4000端口。
+- 然后拉取本仓库代码，并执行以下命令：
+```
+yarn
+yarn start
+```
+- 最后在浏览器中访问：`http://localhost:3000`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 已知未修复bug
+- 点击专辑页进行播放时，可能获取不到音乐的url。
+- 在详情页时，如果输入的id不存在，会使得页面崩溃。
+- 点击首页的轮播图，有时会跳转到一个不存在的网页导致页面崩溃。
