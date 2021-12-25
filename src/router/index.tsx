@@ -22,7 +22,7 @@ const MainRouter = () => (
       />
       <Route path="/discovery/recommend" element={<Home />} />
       <Route path="/discovery/djradio" element={<DJRadio />} />
-      <Route path="/user/home?id=1877725922" element={<User />} />
+      <Route path="/user/home" element={<User />} />
       <Route path="/discovery/playlist" element={<TopPlayList />}/>
       <Route path="search" element={<SearchPage />}/>
       <Route path="discovery/singer" element={<Singer />} />
