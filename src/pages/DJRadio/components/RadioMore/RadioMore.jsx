@@ -12,6 +12,8 @@ const RadioMore = () => {
       { picUrl: "https://p1.music.126.net/l1XyA1qxgc9y-ji6IX1dcw==/109951165666492923.jpg", name: "维维道来", rcmdtext: "【独家】刘维首档音乐播客" }
     ],
   ])
+  const [use,setUse] = useState(false)
+  const [life,setLife] = useState(false)
   const navigate = useNavigate();
   
   //创作翻唱
@@ -23,8 +25,12 @@ const RadioMore = () => {
         setRecommendType(temp)
         console.log("创作翻唱", recommendType, "res.djRadios", res.djRadios)
       }
+      setUse(!use)
     })
-  }, [recommendType])
+
+
+
+  }, [])
   //生活
   useEffect(() => {
     getRecommendType({ type: 6 }).then((res) => {
@@ -35,7 +41,7 @@ const RadioMore = () => {
         console.log("生活", recommendType, "res.djRadios", res.djRadios)
       }
     })
-  }, [recommendType])
+  }, [])
   //情感
   useEffect(() => {
     getRecommendType({ type: 3 }).then((res) => {
@@ -44,9 +50,10 @@ const RadioMore = () => {
         temp.push(res.djRadios);
         setRecommendType(temp)
         console.log("情感", recommendType, "res.djRadios", res.djRadios)
+        setLife(!life)
       }
     })
-  }, [recommendType])
+  }, [])
   //知识
   useEffect(() => {
     getRecommendType({ type: 11 }).then((res) => {
@@ -54,30 +61,30 @@ const RadioMore = () => {
         let temp = recommendType;
         temp.push(res.djRadios);
         setRecommendType(temp)
-        ///console.log("知识", recommendType, "res.djRadios", res.djRadios)
       }
+      setUse(!use)
     })
-  }, [recommendType])
+  }, [])
 
   return <div>
     {
       recommendType.map((item) => {
         return (<div className="rdimore">
-          <div className="title">
+          <div className="rdimoreTitle">
             <h1 style={{ fontSize: "24px" }}>{item[0].category == undefined? "音乐推荐": item[0].category}电台</h1>
           </div>
           <div className="radilist" key={item}>
             <div className="top">
               <div className="topleft" onClick={() => { navigate('*') }}>
                 <img className="topleftImg" src={recommendType == null ? '' : item[0].picUrl} alt=""></img>
-                <div className="text">
+                <div className="ridText">
                   <p style={{ fontSize: "18px", color: "#333" }}>{item[0].name}</p>
                   <p style={{ fontSize: "12px", color: "#999" }}>{item[0].rcmdtext}</p>
                 </div>
               </div>
               <div className="topright" onClick={() => { navigate('*') }}>
                 <img className="topleftImg" src={recommendType == null ? '' : item[1].picUrl} alt=""></img>
-                <div className="text">
+                <div className="ridText">
                   <p style={{ fontSize: "18px", color: "#333" }}>{item[1].name}</p>
                   <p style={{ fontSize: "12px", color: "#999" }}>{item[1].rcmdtext}</p>
                 </div>
@@ -86,14 +93,14 @@ const RadioMore = () => {
             <div className="bottom">
               <div className="bottomleft" onClick={() => { navigate('*') }}>
                 <img className="topleftImg" src={recommendType == null ? '' : item[2].picUrl} alt=""></img>
-                <div className="text">
+                <div className="ridText">
                   <p style={{ fontSize: "18px", color: "#333" }}>{item[2].name}</p>
                   <p style={{ fontSize: "12px", color: "#999" }}>{item[2].rcmdtext}</p>
                 </div>
               </div>
               <div className="bottomright" onClick={() => { navigate('*') }}>
                 <img className="topleftImg" src={recommendType == null ? '' : item[3].picUrl} alt=""></img>
-                <div className="text">
+                <div className="ridText">
                   <p style={{ fontSize: "18px", color: "#333" }}>{item[3].name}</p>
                   <p style={{ fontSize: "12px", color: "#999" }}>{item[3].rcmdtext}</p>
                 </div>
