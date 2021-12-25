@@ -14,7 +14,7 @@ const RadioTop = () => {
     getRecommend().then((res) => {
       if (res.code === 200) {
         setRecommend(res.programs)
-        console.log("setRecommend:", res.programs)
+        //console.log("setRecommend:", res.programs)
       }
     })
   }, [])
@@ -23,7 +23,7 @@ const RadioTop = () => {
     getToplist({limit: 10}).then((res) => {
       if (res.code === 200) {
         setRankList(res.toplist)
-        console.log("setToplist:", res.toplist)
+        //console.log("setToplist:", res.toplist)
       }  
     })
   }, [])
@@ -32,7 +32,7 @@ const RadioTop = () => {
 
   return <div className="rditop">
     <div className="blk fl">
-      <div className="title">
+      <div className="rdiTopTitle">
         <h1 style={{ fontSize: "24px", fontWeight: "normal" }}>推荐节目</h1>
       </div>
       <div className="toplist">
@@ -51,7 +51,7 @@ const RadioTop = () => {
       </div>
     </div>
     <div className="blk fr">
-      <div className="title">
+      <div className="rdiTopTitle">
         <h3 style={{ fontSize: "24px", fontWeight: "normal" }}>节目排行榜</h3>
       </div>
       <div className="toplist">

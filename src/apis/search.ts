@@ -6,5 +6,7 @@ export const getSearchSuggest=(keywords:String)=>{
         return request(`/search/suggest?keywords=${keywords}`) as Promise<any>
     }
 }
-export const getSearchData=(keyword:String)=>
-    request(`/search?keyword=${keyword}`) as Promise<any>
+export const getSearchData=(keyword:String,type:String)=>{
+    return request(`/search?keywords=${keyword}&type=${type}&limit=20`) as Promise<any>
+}
+    

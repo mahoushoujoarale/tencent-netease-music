@@ -16,7 +16,7 @@ export default function Search(props) {
         playlists:"playlist"
     }
     useEffect(()=>{
-        async function getData(props){
+        async function getData(){
             if(searchValue!==""){
                 const {result}=await getSearchSuggest(searchValue);
                 let res=[];
@@ -42,7 +42,7 @@ export default function Search(props) {
     let navigate=useNavigate();
     const handleKeyDown=(event)=>{
         if(event.key==="Enter"&&searchValue!==""){
-            navigate(`/search?keyword=${searchValue}`)
+            navigate(`/search?keyword=${searchValue}&type=1`);
             setSearchValue("");
             setSeleteValue("");
         };
