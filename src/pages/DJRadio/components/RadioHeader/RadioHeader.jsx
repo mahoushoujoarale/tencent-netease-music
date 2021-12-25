@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './RadioHeader.module.less'
+import styles from './RadioHeader.module.css'
 import { Carousel } from 'antd';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 import { Link } from "react-router-dom";

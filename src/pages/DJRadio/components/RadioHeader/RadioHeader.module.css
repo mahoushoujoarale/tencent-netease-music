@@ -5,13 +5,10 @@
   font-size: inherit;
   color: currentColor;
 }
-* {
-    font-size: 12px;
+:global {
     color: #333;
-    font-family: Arial, Helvetica, sans-serif;
 }
 .ridHeadericon {
-    // background: url(https://p2.music.126.net/icULXvfqWJMFvcjTrXSLeA==/109951165406422565.jpg);
     background-repeat: no-repeat;
     width: 50px;
     height: 50px;
@@ -23,14 +20,14 @@
     width: 90px;
     height: 120px;
     background-position: 0 9999px;
-    .text {
-        display: inline-block;
-        transform: translate(0,-90px);
-        text-align: center;
-        color: #888;
-        font-style: normal;
-        font-size: inherit;
-    }
+}
+.text {
+    display: inline-block;
+    transform: translate(0,-90px);
+    text-align: center;
+    color: #888;
+    font-style: normal;
+    font-size: inherit;
 }
 .siglebox {
     list-style: none;
