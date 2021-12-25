@@ -22,14 +22,14 @@ const UserContent = () => {
     useEffect(() => {
         getUserDetail({ id: uid }).then((res) => {
             setUserDetail(res)
-            console.log("userDetail:", res)
+            //console.log("userDetail:", res)
         })
     }, [])
 
     useEffect(() => {
         getPersonalizedList().then((res) => {
             setPersonalizedList(res.data.dailySongs)
-            console.log("getPersonalizedList:", res)
+            //console.log("getPersonalizedList:", res)
         })
     }, [])
 

@@ -26,7 +26,7 @@ const UserHeader = () => {
     useEffect(() => {
         getUserDetail({ id: uid }).then((res) => {
             setUserDetail(res)
-            console.log("userDetail:", userDetail)
+           // console.log("userDetail:", userDetail)
         })
         setChange(!change)
     }, [])
