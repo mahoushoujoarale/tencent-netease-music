@@ -2,12 +2,13 @@
 .ant-carousel .slick-next,
 .ant-carousel .slick-prev:hover,
 .ant-carousel .slick-next:hover {
-  font-size: inherit;
-  color: currentColor;
+    font-size: inherit;
+    color: currentColor;
 }
 :global {
     color: #333;
 }
+
 .ridHeadericon {
     background-repeat: no-repeat;
     width: 50px;
@@ -15,6 +16,7 @@
     margin: 5px auto 0;
     background-position: 0 0;
 }
+
 .siglebox {
     display: block;
     width: 90px;
@@ -29,15 +31,16 @@
     font-style: normal;
     font-size: inherit;
 }
+
 .siglebox {
     list-style: none;
     float: left;
     display: list-item;
     text-align: center;
 }
+
 .LeftOutlined,
-.RightOutlined
- {
-     color: #333;
+.RightOutlined {
+    color: #333;
 
 }

@@ -11,7 +11,6 @@ const onLogOutClick = async () => {
   console.log("logout");
   await logOut().then((res) => {
     console.log(res);
-    document.cookie = "";
   });
 
   window.location.reload();
