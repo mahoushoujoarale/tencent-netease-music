@@ -1,0 +1,57 @@
+.albumContainer{
+    &>.albumList{
+        padding: 0 15px;
+        margin-top: 20px;
+        &>.albumCard{
+            width: 118px;
+            height: 150px;
+            margin-left: 40px;
+            margin-bottom: 24px;
+            display: inline-block;
+            &>.albumImg{
+                width: 118px;
+                height: 100px;
+                display: block;
+                margin-bottom: 6px;
+                background: url("../../../../assets/images/coverall.png") 0 -570px;
+                position: relative;
+                &>img{
+                    width: 100px;
+                    height: 100px;
+                }
+                &:hover{
+                    &>span{
+                        display: block;
+                        position: absolute;
+                        width: 22px;
+                        height: 22px;
+                        right: 25px;
+                        bottom: 5px;
+                        background: url("../../../../assets/images/iconall.png") 0 -85px no-repeat;
+                        &:hover{
+                            background-position: 0 -110px;
+                        }
+                    }
+                }
+            }
+            .albumTitle{
+                font-size: 12px;
+                width: 108px;
+                color: #333;
+                display: block;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+            .artistName{
+                font-size: 12px;
+                width: 108px;
+                color: #666666;
+                display: block;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}
