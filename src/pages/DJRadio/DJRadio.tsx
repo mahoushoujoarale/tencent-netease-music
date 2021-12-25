@@ -5,7 +5,7 @@ import RadioTop from "./components/RadioTop/RadioTop";
 import RadioMore from "./components/RadioMore/RadioMore";
 const DJRadio = () => {
   return <div className="g_bg">
-      <div className="wrapper">
+      <div className="rdiWrapper">
           <div className="radheader">
               <RadioHeader></RadioHeader>
           </div>

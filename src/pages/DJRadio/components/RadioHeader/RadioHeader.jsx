@@ -1,5 +1,5 @@
 import React from "react";
-import './RadioHeader.less'
+import styles from './RadioHeader.module.less'
 import { Carousel } from 'antd';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 //import { Routes, Route, Navigate } from "react-router-dom";
@@ -144,9 +144,9 @@ const RadioHeader = () => {
         <div style={contentStyle}>
           {
             Topimage1.map( item => {
-              return <li className="siglebox" key={item.name}>
-              <div className="icon" style={{background: "url("+ item.imge +")"}} ></div>
-              <em className="text">{item.name}</em>
+              return <li className={styles.siglebox} key={item.name}>
+              <div className={styles.icon} style={{background: "url("+ item.imge +")"}} ></div>
+              <em className={styles.text}>{item.name}</em>
             </li>
             })
           }
@@ -156,9 +156,9 @@ const RadioHeader = () => {
         <div style={contentStyle}>
         {
             Topimage2.map( item => {
-              return <li className="siglebox" key={item.name}>
-              <div className="icon" style={{background: "url("+ item.imge +")"}} ></div>
-              <em className="text">{item.name}</em>
+              return <li className={styles.siglebox} key={item.name}>
+              <div className={styles.icon} style={{background: "url("+ item.imge +")"}} ></div>
+              <em className={styles.text}>{item.name}</em>
             </li>
             })
           }
