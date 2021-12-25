@@ -27,7 +27,7 @@ const HomeTopList = () => {
     <div className="home-toplist">
       <HomeBlockTitle name="榜单" href="/discover/toplist" />
       <div className="container">
-        {rank.map(
+        {(rank || []).map(
           (playlist: {
             id: string;
             coverImgUrl: string;
@@ -59,28 +59,26 @@ const HomeTopList = () => {
                   </div>
                 </div>
                 <div className="bottom">
-                  {playlist.tracks
-                    .slice(0, 10)
-                    .map(
-                      (item: { id: string; name: string }, index: number) => {
-                        return (
-                          <div className="item" key={item.id}>
-                            <span className="number">{index + 1}</span>
-                            <Link to={`/song?id=${item.id}`} className="name">
-                              {item.name}
-                            </Link>
-                            <div className="icons">
-                              <div
-                                className="icon play"
-                                onClick={action(() => addToPlaylist(item.id))}
-                              ></div>
-                              <div className="icon add"></div>
-                              <div className="icon collect"></div>
-                            </div>
+                  {(playlist.tracks.slice(0, 10) || []).map(
+                    (item: { id: string; name: string }, index: number) => {
+                      return (
+                        <div className="item" key={item.id}>
+                          <span className="number">{index + 1}</span>
+                          <Link to={`/song?id=${item.id}`} className="name">
+                            {item.name}
+                          </Link>
+                          <div className="icons">
+                            <div
+                              className="icon play"
+                              onClick={action(() => addToPlaylist(item.id))}
+                            ></div>
+                            <div className="icon add"></div>
+                            <div className="icon collect"></div>
                           </div>
-                        );
-                      }
-                    )}
+                        </div>
+                      );
+                    }
+                  )}
                   <Link
                     to={`/discover/toplist?id=${playlist.id}`}
                     className="all"

@@ -13,7 +13,7 @@ const HomeBlockTitle = (props: {
       <div className="name">{name}</div>
       {list ? (
         <ul className="list">
-          {list.map((item: { name: string; href: string }) => {
+          {(list || []).map((item: { name: string; href: string }) => {
             return (
               <li key={item.name}>
                 <Link to={item.href} className="item">

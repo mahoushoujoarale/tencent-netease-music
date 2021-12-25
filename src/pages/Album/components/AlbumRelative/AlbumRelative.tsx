@@ -36,7 +36,7 @@ const AlbumRelative = () => {
             全部&gt;
           </Link>
         </div>
-        {artistAlbumList.map(
+        {(artistAlbumList || []).map(
           (item: {
             name: string;
             id: number;
