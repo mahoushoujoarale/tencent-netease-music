@@ -28,9 +28,6 @@ const RadioTop = () => {
     })
   }, [])
 
-  const gotoPlay = (event) => {
-    //navigate('')
-  }
 
 
   return <div className="rditop">
@@ -42,7 +39,7 @@ const RadioTop = () => {
         {
           recommend.map((item) => {
             return (<div onClick={action ( () => {navigate(`/playlist?id=${item.mainTrackId}`)})} className="listItem" key={item.mainSong.name} >
-              <img src={item.coverUrl} style={{ width: "40px", height: "40px" }} />
+              <img src={item.coverUrl} style={{ width: "40px", height: "40px" }} alt="coverImag" />
               <div className="programName">
                 <div className="Text" style={{ textOverflow: "ellipsis" }}>{item.mainSong.name}</div>
                 <div className="Text" style={{ marginTop: "-18px", color: "#999" }}>{item.radio.name}</div>
@@ -62,7 +59,7 @@ const RadioTop = () => {
           rankList.map((item) => {
             return (<div className="listItem" onClick={action ( () => {navigate(`/playlist?id=${item.program.id}`)})} key={item.program.mainSong.name} >
               <h1 className="rank">{item.rank < 10 ? `0${item.rank}` : item.rank}</h1>
-              <img src={item.program.coverUrl} style={{ width: "40px", height: "40px" }} />
+              <img src={item.program.coverUrl} style={{ width: "40px", height: "40px" }} alt="coverImag"/>
               <div className="rankListName">
                 <div className="Text">{item.program.mainSong.name}</div>
                 <div className="Text" style={{ marginTop: "-18px", color: "#999" }}>{item.program.radio.name}</div>
