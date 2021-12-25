@@ -23,7 +23,7 @@ const RadioMore = () => {
         let temp = recommendType;
         temp.push(res.djRadios);
         setRecommendType(temp)
-        console.log("创作翻唱", recommendType, "res.djRadios", res.djRadios)
+        //console.log("创作翻唱", recommendType, "res.djRadios", res.djRadios)
       }
       setUse(!use)
     })
@@ -38,7 +38,7 @@ const RadioMore = () => {
         let temp = recommendType;
         temp.push(res.djRadios);
         setRecommendType(temp)
-        console.log("生活", recommendType, "res.djRadios", res.djRadios)
+        //console.log("生活", recommendType, "res.djRadios", res.djRadios)
       }
     })
   }, [])
@@ -49,7 +49,7 @@ const RadioMore = () => {
         let temp = recommendType;
         temp.push(res.djRadios);
         setRecommendType(temp)
-        console.log("情感", recommendType, "res.djRadios", res.djRadios)
+        //console.log("情感", recommendType, "res.djRadios", res.djRadios)
         setLife(!life)
       }
     })

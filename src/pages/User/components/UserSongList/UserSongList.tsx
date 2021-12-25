@@ -17,7 +17,7 @@ const UserSongList:React.FC = () => {
     useEffect (()=> {
         getUserDetail({id : uid}).then((res) => {
             setUserDetail(res.profile)
-            console.log("userDtail:",res)
+            //console.log("userDtail:",res)
         })
     },[])
 
@@ -27,7 +27,7 @@ const UserSongList:React.FC = () => {
                 setUserPlayList(res.playlist)
             }
             
-            console.log("getUserPlayList:",res)
+            //console.log("getUserPlayList:",res)
         })
     },[])
 

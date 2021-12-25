@@ -125,7 +125,7 @@ const RadioHeader = () => {
   //   }
   // ])
   function onChange(a, b, c) {
-    console.log(a, b, c);
+    //console.log(a, b, c);
   }
 
   // useEffect(() => {

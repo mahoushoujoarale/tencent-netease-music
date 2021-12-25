@@ -14,7 +14,7 @@ const RadioTop = () => {
     getRecommend().then((res) => {
       if (res.code === 200) {
         setRecommend(res.programs)
-        console.log("setRecommend:", res.programs)
+        //console.log("setRecommend:", res.programs)
       }
     })
   }, [])
@@ -23,7 +23,7 @@ const RadioTop = () => {
     getToplist({limit: 10}).then((res) => {
       if (res.code === 200) {
         setRankList(res.toplist)
-        console.log("setToplist:", res.toplist)
+        //console.log("setToplist:", res.toplist)
       }  
     })
   }, [])
