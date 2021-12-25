@@ -6,13 +6,10 @@ import Song from "../pages/Song/Song";
 import Album from "@/pages/Album/Album";
 import Playlist from "@/pages/Playlist/Playlist";
 import NotFound from "../components/NotFound/NotFound";
-import DJRadio from "@/pages/DJRadio/DJRadio"
-<<<<<<< HEAD
-import User from '@/pages/User/User'
-=======
+import DJRadio from "@/pages/DJRadio/DJRadio";
+import User from "@/pages/User/User";
 import TopPlayList from "@/pages/TopPlaylist/TopPlaylist";
 import SearchPage from "@/pages/SearchPage/SearchPage";
->>>>>>> brand1
 
 const MainRouter = () => (
   <>
@@ -24,12 +21,9 @@ const MainRouter = () => (
       />
       <Route path="/discovery/recommend" element={<Home />} />
       <Route path="/discovery/djradio" element={<DJRadio />} />
-<<<<<<< HEAD
       <Route path="/user/home?id=1877725922" element={<User />} />
-=======
-      <Route path="/discovery/playlist" element={<TopPlayList />}/>
-      <Route path="search" element={<SearchPage />}/>
->>>>>>> brand1
+      <Route path="/discovery/playlist" element={<TopPlayList />} />
+      <Route path="search" element={<SearchPage />} />
       <Route path="friend" element={<Friend />} />
       <Route path="mine" element={<Mine />} />
       <Route path="song" element={<Song />} />
