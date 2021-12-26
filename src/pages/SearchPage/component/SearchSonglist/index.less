@@ -33,19 +33,28 @@
         }
         &>.songlist-name{
             display: inline-block;
-            width: 35%;
+            width: 30%;
             color: #333;
             padding-left: 15px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
         &>.text{
             display: inline-block;
             width: 10%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
         &>.creator{
             display: inline-block;
             width: 20%;
             &>.link{
                 color: #333;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
             }
         }
     }

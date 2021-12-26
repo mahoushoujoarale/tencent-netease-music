@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {resetPlaylistByAlbum} from "@/utils"
+import { action } from "mobx";
 import "./index.less"
 
 const AlbumList=(props:{data:any})=>{
@@ -13,7 +15,10 @@ const AlbumList=(props:{data:any})=>{
                             <li className="albumCard" key={item.id}>
                                 <Link className="albumImg" to={`/album?id=${item.id}`}>
                                     <img src={item.picUrl} alt="" />
-                                    <span></span>
+                                    <span onClick={action((event)=>{
+                                        event?.preventDefault();
+                                        resetPlaylistByAlbum(item.id.toString());
+                                    })}></span>
                                 </Link>
                                 <Link to={`/album?id=${item.id}`} className="albumTitle">
                                     {item.name}

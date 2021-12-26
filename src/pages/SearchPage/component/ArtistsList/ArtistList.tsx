@@ -3,7 +3,7 @@ import "./index.less"
 import { Link } from "react-router-dom";
 
 const ArtistList=(props:{data:any})=>{
-    console.log(props.data);
+    // console.log(props.data);
     return(
         <div>
             {props.data.map((item:{name:string,picUrl:string,id:number})=>{

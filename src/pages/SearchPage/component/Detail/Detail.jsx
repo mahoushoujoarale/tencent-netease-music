@@ -3,7 +3,8 @@ import { useSearchParams,useLocation } from 'react-router-dom'
 import {getSearchData} from '@/apis/search'
 import {Menu} from "antd"
 import SongsList from "../songsList/SongsList"
-import { Spin } from 'antd'
+import { Spin,Result } from 'antd'
+import {FrownOutlined} from "@ant-design/icons"
 import ArtistList from '../ArtistsList/ArtistList'
 import UserList from '../UserList/UserList'
 import AlbumList from '../AlbumList/AlbumList'
@@ -20,24 +21,35 @@ export default function Detail() {
     const [dataType,setDataType]=useState("0");
     useEffect(() => {
         setType(searchParams.get('type'));
-        console.log(type);
+        // console.log(type);
         setkeyword(searchParams.get('keyword'));
-        console.log(keyword);
+        // console.log(keyword);
         setDataType("0");
     },[location] )
     useEffect(()=>{
         async function getData(k,t){
-            console.log(t);
-            const {result}=await getSearchData(k,t);
-            console.log(result);
-            for(let k in result){
-                if(Array.isArray(result[k])){
-                    setData(result[k]);
-                    console.log(dataType);
+            // console.log(t);
+            const {result,code}=await getSearchData(k,t);
+            // console.log(result);
+            if(code===200){
+                for(let k in result){
+                    if(Array.isArray(result[k])){
+                        setData(result[k]);
+                        // console.log(dataType);
+                    }
+                    if(Number.isInteger(result[k])){
+                        if(result[k]===0){
+                            setDataType("-1");
+                            setData([]);
+                        }
+                    }
                 }
+            }else{
+                setDataType("-1");
             }
+            
         }
-        console.log(keyword,type);
+        // console.log(keyword,type);
         getData(keyword,type);
     },[type,keyword])
     useEffect(()=>{ 
@@ -79,6 +91,7 @@ export default function Detail() {
                     {dataType==="1000"&&<SearchSonglist data={data}/>}
                     {dataType==="1002"&&<UserList data={data}/>}
                     {dataType==="0"&&<Spin/>}
+                    {dataType==="-1"&&<Result title="Can't find the data" icon={<FrownOutlined/>}></Result>}
             </div>
         </div>
     )
