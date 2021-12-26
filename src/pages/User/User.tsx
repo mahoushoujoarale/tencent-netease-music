@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./User.less";
-//import {useLocation} from 'react-router-dom'
-import { getUserSubcount } from "@/apis/user";
-//import { getUserDetail } from "@/apis/user";
 import UserHeader from "../User/components/UserHeader/UserHeader";
 import UserContent from "./components/UserContent/UserContent";
 import UserSongList from "./components/UserSongList/UserSongList";

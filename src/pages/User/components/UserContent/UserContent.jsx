@@ -4,14 +4,13 @@ import { useLocation } from "react-router-dom";
 import { getUserDetail} from "@/apis/user";
 import { PlayCircleOutlined } from "@ant-design/icons";
 import { getPersonalizedList } from "@/apis/personalizedList";
-import { useNavigate,Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 const UserContent = () => {
     const fontStyle = {
         fontSize: "22px",
         color: "#666"
     }
     const [personalizedList, setPersonalizedList] = useState([])
-    const navigate = useNavigate()
     let location = useLocation();
     const uid = location.search.slice(4)
     const [userDetail, setUserDetail] = useState({

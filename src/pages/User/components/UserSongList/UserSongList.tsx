@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from "react";
 import './UserSongList.less'
 import { getUserDetail } from "@/apis/user";
-import { useNavigate, useLocation,Link } from "react-router-dom";
+import {useLocation,Link } from "react-router-dom";
 import { getUserPlayList } from "@/apis/getUserPlayList";
 import { formatPlayCount, resetPlaylist} from "@/utils";
 import { action } from "mobx";
 
 const UserSongList:React.FC = () => {
-    const navigate = useNavigate()
     const location = useLocation()
     const [userDetail,setUserDetail] = useState({
         playlistCount:0
