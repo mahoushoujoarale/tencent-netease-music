@@ -2,12 +2,17 @@
 .ant-carousel .slick-next,
 .ant-carousel .slick-prev:hover,
 .ant-carousel .slick-next:hover {
-    font-size: inherit;
-    color: currentColor;
+    color: none;
+    font-size: none;
 }
-* {
+/* .ant-carousel .slick-prev, .ant-carousel .slick-next {
     color: #333;
-}
+    font-size: large;
+} */
+
+/* .CaretLeftFilled {
+    color: black;
+} */
 
 .ridHeadericon {
     background-repeat: no-repeat;

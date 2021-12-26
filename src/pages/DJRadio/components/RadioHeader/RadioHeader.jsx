@@ -121,7 +121,7 @@ const RadioHeader = () => {
   return (
     <div>
       <Carousel
-        arrows
+        arrows={true}
         prevArrow={<LeftOutlined />}
         nextArrow={<RightOutlined />}
         afterChange={onChange}
