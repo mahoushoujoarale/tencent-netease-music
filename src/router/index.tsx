@@ -10,6 +10,7 @@ import DJRadio from "@/pages/DJRadio/DJRadio";
 import User from "@/pages/User/User";
 import SearchPage from "@/pages/SearchPage/SearchPage";
 import Singer from "@/pages/Singer/Singer";
+import RadioplayList from "@/pages/RadioplayList/RadioplayList";
 
 const MainRouter = () => (
   <>
@@ -25,6 +26,7 @@ const MainRouter = () => (
       <Route path="search" element={<SearchPage />} />
       <Route path="discovery/singer" element={<Singer />} />
       <Route path="user/home" element={<User />} />
+      <Route path="djradio" element={<RadioplayList />} />
       <Route path="friend" element={<Friend />} />
       <Route path="mine" element={<Mine />} />
       <Route path="song" element={<Song />} />

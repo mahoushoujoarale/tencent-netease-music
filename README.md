@@ -18,6 +18,9 @@ React Netease Music——一个基于React、TypeScript的高仿网易云音乐w
 - [x] 专辑详情页
 - [x] 评论展示
 - [x] 分页功能
+- [x] 搜索相关页
+- [x] 主播电台页
+- [x] 个人主页
 - [x] 歌曲播放详情页
   - [x] 播放列表
   - [x] 歌词滚动
@@ -37,6 +40,7 @@ React Netease Music——一个基于React、TypeScript的高仿网易云音乐w
 - create-react-app
 - webpack
 - eslint
+- Prettier
 
 ## API接口
 - [NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)
@@ -57,6 +61,12 @@ React Netease Music——一个基于React、TypeScript的高仿网易云音乐w
 ![07_评论详情](./pictures/评论详情.png)
 
 ![08_分页功能](./pictures/分页功能.png)
+
+![09_搜索相关页](./pictures/搜索相关页.png)
+
+![10_主播电台页](./pictures/主播电台页.png)
+
+![11_个人主页](./pictures/个人主页.png)
 
 ## 项目启动
 - 首先将上面👆提到的API接口拉到本地，跑在4000端口。
