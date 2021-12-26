@@ -6,14 +6,16 @@ import DownloadApps from "@/components/DownloadApps/DownloadApps";
 
 const RadioplayRight = () => {
   const [recommendDJList, setRecommendDJList] = useState([]);
+  const [use,setUse] = useState(false)
 
   useEffect(() => {
       getRecommendDJprogram().then ((res)=> {
         if (res.code === 200) {
-          console.log("recommendDJList:",res);
-          setRecommendDJList(res.result)
+          //console.log("recommendDJList:",res);
+          setRecommendDJList(res.programs)
         } 
       })
+      setUse(!use)
   }, []);
 
   return (
@@ -25,11 +27,11 @@ const RadioplayRight = () => {
             name: string;
             id: number;
             mainSong: {artists: [{name: string}]},
-            picUrl: string;
+            coverUrl: string;
           }) => (
             <div className="item" key={item.id}>
               <Link to={`/djradio?id=${item.id}`} className="cover">
-                <img src={item.picUrl} alt="封面" />
+                <img src={item.coverUrl} alt="封面" />
               </Link>
               <div className="desc">
                 <Link to={`/djradio?id=${item.id}`} className="simi-list">

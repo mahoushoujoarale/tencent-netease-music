@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import './RadioTop.less'
 import { getRecommend } from '@/apis/recommendProgram'
 import { getToplist } from "@/apis/toplist";
-import { useNavigate, Link } from 'react-router-dom'
+import {  Link } from 'react-router-dom'
 import { action } from "mobx";
 
 const RadioTop = () => {
   const [recommend, setRecommend] = useState([])
   const [rankList, setRankList] = useState([])
-  const navigate = useNavigate()
 
   useEffect(() => {
     getRecommend().then((res) => {
@@ -38,15 +37,15 @@ const RadioTop = () => {
       <div className="toplist">
         {
           recommend.map((item) => {
-            return (<div onClick={action(() => { navigate(`/playlist?id=${item.mainTrackId}`) })} className="listItem" key={item.mainSong.name} >
-              <Link to={`/playlist?id=${item.mainTrackId}`}>
+            return (<div className="listItem" key={item.mainSong.name} >
+              <Link to={`/djradio?id=${item.id}`}>
                 <img src={item.coverUrl} style={{ width: "40px", height: "40px" }} alt="coverImag" />
               </Link>
               <div className="programName">
-                <Link style={{ textDecorationColor: "#666" }} to={`/playlist?id=${item.mainTrackId}`}>
+                <Link style={{ textDecorationColor: "#666" }} to={`/djradio?id=${item.id}`}>
                   <div className="Text" style={{ textOverflow: "ellipsis" }}>{item.mainSong.name}</div>
                 </Link>
-                <Link style={{ textDecorationColor: "#999" }} to={`/playlist?id=${item.mainTrackId}`}>
+                <Link style={{ textDecorationColor: "#999" }} to={`/djradio?id=${item.id}`}>
                   <div className="Text" style={{ marginTop: "-18px", color: "#999" }}>{item.radio.name}</div>
                 </Link>
               </div>
@@ -65,16 +64,16 @@ const RadioTop = () => {
       <div className="toplist">
         {
           rankList.map((item) => {
-            return (<div className="listItem" onClick={action(() => { navigate(`/playlist?id=${item.program.id}`) })} key={item.program.mainSong.name} >
+            return (<div className="listItem" key={item.program.mainSong.name} >
               <h1 className="rank">{item.rank < 10 ? `0${item.rank}` : item.rank}</h1>
-              <Link to={`/playlist?id=${item.mainTrackId}`}>
+              <Link to={`/djradio?id=${item.id}`}>
                 <img src={item.program.coverUrl} style={{ width: "40px", height: "40px" }} alt="coverImag" />
               </Link>
               <div className="rankListName">
-                <Link style={{ textDecorationColor: "#999" }} to={`/playlist?id=${item.mainTrackId}`}>
+                <Link style={{ textDecorationColor: "#999" }} to={`/djradio?id=${item.id}`}>
                   <div className="Text">{item.program.mainSong.name}</div>
                 </Link>
-                <Link style={{ textDecorationColor: "#999" }} to={`/playlist?id=${item.mainTrackId}`}>
+                <Link style={{ textDecorationColor: "#999" }} to={`/djradio?id=${item.id}`}>
                   <div className="Text" style={{ marginTop: "-18px", color: "#999" }}>{item.program.radio.name}</div>
                 </Link>
               </div>
