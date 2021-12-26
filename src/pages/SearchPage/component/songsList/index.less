@@ -1,0 +1,35 @@
+.songItem{
+    background-color: #fff;
+    padding-left: 20px;
+    border: 1px solid #efefef;
+    &>span{
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+        font-size: 12px;
+        width: 30%;
+        color: 333;
+    }
+    &>.icon{
+        display: inline-block;
+        height: 22px;
+        width: 22px;
+        margin: 8px 10px 0 0;
+        cursor: pointer;
+        background: url(../../../../assets/images/title.png) no-repeat;
+        background-position: -267px -205px;
+        &:hover{
+            background-position: -267px -235px;
+        }
+    }
+    &.odd{
+        background-color: #f7f7f7;
+        &:hover{
+            background-color: #f0f0f0;
+        }
+    }
+    &:hover{
+        background-color: #f0f0f0;
+    }
+    
+}
