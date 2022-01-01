@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const contentStyle = {
   fontSsize: "12px",
   color: "#fff",
-  lineHeight: "194px",
+  lineHeight: "195px",
   textAlign: "center",
   background: "#444",
   marginLeft: "38px",
@@ -115,7 +115,6 @@ const Topimage2 = [
 
 const RadioHeader = () => {
   function onChange(a, b, c) {
-    //console.log(a, b, c);
   }
 
   return (
@@ -161,7 +160,6 @@ const RadioHeader = () => {
           </div>
         </div>
       </Carousel>
-      ,
     </div>
   );
 };

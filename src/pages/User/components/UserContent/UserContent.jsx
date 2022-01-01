@@ -12,7 +12,7 @@ const UserContent = () => {
   };
   const [personalizedList, setPersonalizedList] = useState([]);
   let location = useLocation();
-  const uid = location.search.slice(4);
+  const uid = location.search.slice(4) || '0';
   const [userDetail, setUserDetail] = useState({
     profile: {
       listenSongs: 0,

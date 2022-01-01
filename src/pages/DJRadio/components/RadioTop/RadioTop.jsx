@@ -43,7 +43,7 @@ const RadioTop = () => {
               </Link>
               <div className="programName">
                 <Link style={{ textDecorationColor: "#666" }} to={`/djradio?id=${item.id}`}>
-                  <div className="Text" style={{ textOverflow: "ellipsis" }}>{item.mainSong.name}</div>
+                  <div className="Text">{item.mainSong.name}</div>
                 </Link>
                 <Link style={{ textDecorationColor: "#999" }} to={`/djradio?id=${item.id}`}>
                   <div className="Text" style={{ marginTop: "-18px", color: "#999" }}>{item.radio.name}</div>

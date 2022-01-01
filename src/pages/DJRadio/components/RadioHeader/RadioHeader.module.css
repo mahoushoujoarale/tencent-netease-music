@@ -2,8 +2,8 @@
 .ant-carousel .slick-next,
 .ant-carousel .slick-prev:hover,
 .ant-carousel .slick-next:hover {
-    color: none;
-    font-size: none;
+    color: #333;
+    font-size: larger;
 }
 /* .ant-carousel .slick-prev, .ant-carousel .slick-next {
     color: #333;
