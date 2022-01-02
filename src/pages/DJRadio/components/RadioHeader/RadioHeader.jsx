@@ -5,12 +5,11 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
 const contentStyle = {
-  fontSsize: "12px",
+  fontSsize: "0.1rem",
   color: "#fff",
-  lineHeight: "195px",
+  lineHeight: "220px",
   textAlign: "center",
-  background: "#444",
-  marginLeft: "38px",
+  marginLeft: "0.3rem",
 };
 
 const Topimage1 = [
@@ -121,8 +120,8 @@ const RadioHeader = () => {
     <div>
       <Carousel
         arrows={true}
-        prevArrow={<LeftOutlined />}
-        nextArrow={<RightOutlined />}
+        prevArrow={<LeftOutlined  />}
+        nextArrow={<RightOutlined style={{color: "#333", fontSize: "20px"}} />}
         afterChange={onChange}
       >
         <div>
@@ -133,7 +132,7 @@ const RadioHeader = () => {
                   <Link to={"/*"}>
                     <div
                       className={styles.ridHeadericon}
-                      style={{ background: "url(" + item.imge + ")" }}
+                      style={{ background: "url(" + item.imge + ") -6.5px -6px no-repeat" }}
                     ></div>
                   </Link>
                   <Link to={"/*"}>

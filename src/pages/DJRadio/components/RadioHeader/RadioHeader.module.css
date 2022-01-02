@@ -1,9 +1,11 @@
+
+/* .ant-carousel .slick-prev:hover,
+.ant-carousel .slick-next:hover */
 .ant-carousel .slick-prev,
-.ant-carousel .slick-next,
-.ant-carousel .slick-prev:hover,
-.ant-carousel .slick-next:hover {
+.ant-carousel .slick-next
+{
     color: #333;
-    font-size: larger;
+    font-size: 1rem;
 }
 /* .ant-carousel .slick-prev, .ant-carousel .slick-next {
     color: #333;
@@ -16,17 +18,16 @@
 
 .ridHeadericon {
     background-repeat: no-repeat;
-    width: 50px;
-    height: 50px;
-    margin: 5px auto 0;
+    width: 0.28rem;
+    height: 0.28rem;
+    margin: 0.03rem auto 0;
     background-position: 0 0;
 }
 
 .siglebox {
     display: block;
-    width: 90px;
-    height: 120px;
-    background-position: 0 9999px;
+    width: 0.61rem;
+    height: 0.8rem;
 }
 .text {
     display: inline-block;
@@ -34,7 +35,7 @@
     text-align: center;
     color: #888;
     font-style: normal;
-    font-size: inherit;
+    font-size: 0.09rem;
 }
 
 .siglebox {
@@ -47,5 +48,4 @@
 .LeftOutlined,
 .RightOutlined {
     color: #333;
-
 }

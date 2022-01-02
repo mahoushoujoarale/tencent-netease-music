@@ -69,7 +69,7 @@ const RadioMore = () => {
       recommendType.map((item) => {
         return (<div className="rdimore">
           <div className="rdimoreTitle">
-            <h1 style={{ fontSize: "24px" }}>{item[0].category === undefined ? "音乐推荐" : item[0].category}电台</h1>
+            <h1 style={{ fontSize: "0.17rem" }}>{item[0].category === undefined ? "音乐推荐" : item[0].category}电台</h1>
           </div>
           <div className="radilist" key={item}>
             <div className="top">
@@ -79,9 +79,9 @@ const RadioMore = () => {
                 </Link>
                 <div className="ridText">
                   <Link style={{textDecorationColor: "#666"}} to={`/djradio?id=${item[0].id}`}>
-                  <p style={{ fontSize: "18px", color: "#333" }}>{item[0].name}</p>
+                  <p style={{ fontSize: "0.15rem", color: "#333" }}>{item[0].name}</p>
                   </Link>
-                  <p style={{ fontSize: "12px", color: "#999" }}>{item[0].rcmdtext}</p>
+                  <p style={{ fontSize: "0.09rem", color: "#999" }}>{item[0].rcmdtext}</p>
                 </div>
               </div>
               <div className="topright">
@@ -90,9 +90,9 @@ const RadioMore = () => {
                 </Link>
                 <div className="ridText">
                 <Link style={{textDecorationColor: "#666"}} to={`/djradio?id=${item[1].id}`}>
-                  <p style={{ fontSize: "18px", color: "#333" }}>{item[1].name}</p>
+                  <p style={{ fontSize: "0.15rem", color: "#333" }}>{item[1].name}</p>
                   </Link>
-                  <p style={{ fontSize: "12px", color: "#999" }}>{item[1].rcmdtext}</p>
+                  <p style={{ fontSize: "0.09rem", color: "#999" }}>{item[1].rcmdtext}</p>
                 </div>
               </div>
             </div>
@@ -103,9 +103,9 @@ const RadioMore = () => {
                 </Link>
                 <div className="ridText">
                 <Link style={{textDecorationColor: "#666"}} to={`/djradio?id=${item[2].id}`}>
-                  <p style={{ fontSize: "18px", color: "#333" }}>{item[2].name}</p>
+                  <p style={{ fontSize: "0.15rem", color: "#333" }}>{item[2].name}</p>
                   </Link>
-                  <p style={{ fontSize: "12px", color: "#999" }}>{item[2].rcmdtext}</p>
+                  <p style={{ fontSize: "0.09rem", color: "#999" }}>{item[2].rcmdtext}</p>
                 </div>
               </div>
               <div className="bottomright">
@@ -114,9 +114,9 @@ const RadioMore = () => {
                 </Link>
                 <div className="ridText">
                 <Link style={{textDecorationColor: "#666"}} to={`/djradio?id=${item[3].id}`}>
-                  <p style={{ fontSize: "18px", color: "#333" }}>{item[3].name}</p>
+                  <p style={{ fontSize: "0.15rem", color: "#333" }}>{item[3].name}</p>
                   </Link>
-                  <p style={{ fontSize: "12px", color: "#999" }}>{item[3].rcmdtext}</p>
+                  <p style={{ fontSize: "0.09rem", color: "#999" }}>{item[3].rcmdtext}</p>
                 </div>
               </div>
             </div>
