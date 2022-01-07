@@ -1,0 +1,6 @@
+.ant-carousel .slick-prev,
+.ant-carousel .slick-next
+{
+    color: #666;
+    font-size: inherit;
+}

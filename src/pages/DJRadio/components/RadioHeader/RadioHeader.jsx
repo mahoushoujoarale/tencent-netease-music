@@ -3,6 +3,7 @@ import styles from "./RadioHeader.module.css";
 import { Carousel } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import "./RadioHeader.global.css"
 
 const contentStyle = {
   fontSsize: "0.1rem",
@@ -120,8 +121,8 @@ const RadioHeader = () => {
     <div>
       <Carousel
         arrows={true}
-        prevArrow={<LeftOutlined  />}
-        nextArrow={<RightOutlined style={{color: "#333", fontSize: "20px"}} />}
+        prevArrow={<LeftOutlined className={styles.antCrousel}  />}
+        nextArrow={<RightOutlined className={styles.antCrousel} />}
         afterChange={onChange}
       >
         <div>

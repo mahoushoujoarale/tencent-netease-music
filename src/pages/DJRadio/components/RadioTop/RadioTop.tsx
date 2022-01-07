@@ -105,7 +105,7 @@ const RadioTop = () => {
                 </div>
                 <div className="u-hot">
                   <i className="slide"></i>
-                  <i className="slideAfter" style={{ width: `${(item.score % 100) / 100 * 0.6}rem`, transform: `translateX(-0.15rem)`}}></i>
+                  <i className="slideAfter" style={{ width: `${(item.score % 100) / 100 * 0.6}rem`, transform: `translateX(-0.08rem)`}}></i>
                 </div>
               </div>)
             }

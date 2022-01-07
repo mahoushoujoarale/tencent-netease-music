@@ -1,20 +1,8 @@
 
-/* .ant-carousel .slick-prev:hover,
-.ant-carousel .slick-next:hover */
-.ant-carousel .slick-prev,
-.ant-carousel .slick-next
-{
+.antCrousel {
     color: #333;
-    font-size: 1rem;
+    font-size: 22px;
 }
-/* .ant-carousel .slick-prev, .ant-carousel .slick-next {
-    color: #333;
-    font-size: large;
-} */
-
-/* .CaretLeftFilled {
-    color: black;
-} */
 
 .ridHeadericon {
     background-repeat: no-repeat;
