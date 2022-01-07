@@ -1,0 +1,17 @@
+.Singer_bg {
+    width: 6.5rem;
+    min-height: 4.6rem;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #d3d3d3;
+    border-width: 0 1px;
+}
+.Singer_left {
+    width: 1.2rem;
+    border-right: 1px solid #d3d3d3;
+}
+.Singer_right {
+    width: 5.3rem;
+}

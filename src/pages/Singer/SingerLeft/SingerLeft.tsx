@@ -20,41 +20,41 @@ const SingerLeft = () => {
         <div className="SingerBlock">
             <h2 className="Stitle">华语</h2>
             <ul className="Sul">
-                <li className="Sli"><Link style={LinkStyle} to={'*'}>华语男歌手</Link></li>
-                <li className="Sli"><Link style={LinkStyle} to={'*'}>华语女歌手</Link></li>
-                <li className="Sli"><Link style={LinkStyle} to={'*'}>华语组合/乐队</Link></li>
+                <li className="Sli"><Link style={LinkStyle} to={`/discovery/singer/cat?id=${71}`}>华语男歌手</Link></li>
+                <li className="Sli"><Link style={LinkStyle} to={`/discovery/singer/cat?id=${72}`}>华语女歌手</Link></li>
+                <li className="Sli"><Link style={LinkStyle} to={`/discovery/singer/cat?id=${73}`}>华语组合/乐队</Link></li>
             </ul>
         </div>
         <div className="SingerBlock">
             <h2 className="Stitle">欧美</h2>
             <ul className="Sul">
-                <li className="Sli"><Link style={LinkStyle} to={'*'}>欧美男歌手</Link></li>
-                <li className="Sli"><Link style={LinkStyle} to={'*'}>欧美女歌手</Link></li>
-                <li className="Sli"><Link style={LinkStyle} to={'*'}>欧美组合/乐队</Link></li>
+                <li className="Sli"><Link style={LinkStyle} to={`/discovery/singer/cat?id=${961}`}>欧美男歌手</Link></li>
+                <li className="Sli"><Link style={LinkStyle} to={`/discovery/singer/cat?id=${962}`}>欧美女歌手</Link></li>
+                <li className="Sli"><Link style={LinkStyle} to={`/discovery/singer/cat?id=${963}`}>欧美组合/乐队</Link></li>
             </ul>
         </div>
         <div className="SingerBlock">
             <h2 className="Stitle">日本</h2>
             <ul className="Sul">
-                <li className="Sli"><Link style={LinkStyle} to={'*'}>日本男歌手</Link></li>
-                <li className="Sli"><Link style={LinkStyle} to={'*'}>日本女歌手</Link></li>
-                <li className="Sli"><Link style={LinkStyle} to={'*'}>日本组合/乐队</Link></li>
+                <li className="Sli"><Link style={LinkStyle} to={`/discovery/singer/cat?id=${81}`}>日本男歌手</Link></li>
+                <li className="Sli"><Link style={LinkStyle} to={`/discovery/singer/cat?id=${82}`}>日本女歌手</Link></li>
+                <li className="Sli"><Link style={LinkStyle} to={`/discovery/singer/cat?id=${83}`}>日本组合/乐队</Link></li>
             </ul>
         </div>
         <div className="SingerBlock">
             <h2 className="Stitle">韩国</h2>
             <ul className="Sul">
-                <li className="Sli"><Link style={LinkStyle} to={'*'}>韩国男歌手</Link></li>
-                <li className="Sli"><Link style={LinkStyle} to={'*'}>韩国女歌手</Link></li>
-                <li className="Sli"><Link style={LinkStyle} to={'*'}>韩国组合/乐队</Link></li>
+                <li className="Sli"><Link style={LinkStyle} to={`/discovery/singer/cat?id=${161}`}>韩国男歌手</Link></li>
+                <li className="Sli"><Link style={LinkStyle} to={`/discovery/singer/cat?id=${162}`}>韩国女歌手</Link></li>
+                <li className="Sli"><Link style={LinkStyle} to={`/discovery/singer/cat?id=${163}`}>韩国组合/乐队</Link></li>
             </ul>
         </div>
         <div className="SingerBlock">
             <h2 className="Stitle">其他</h2>
             <ul className="Sul">
-                <li className="Sli"><Link style={LinkStyle} to={'*'}>其他男歌手</Link></li>
-                <li className="Sli"><Link style={LinkStyle} to={'*'}>其他女歌手</Link></li>
-                <li className="Sli"><Link style={LinkStyle} to={'*'}>其他组合/乐队</Link></li>
+                <li className="Sli"><Link style={LinkStyle} to={`/discovery/singer/cat?id=${"01"}`}>其他男歌手</Link></li>
+                <li className="Sli"><Link style={LinkStyle} to={`/discovery/singer/cat?id=${"02"}`}>其他女歌手</Link></li>
+                <li className="Sli"><Link style={LinkStyle} to={`/discovery/singer/cat?id=${"03"}`}>其他组合/乐队</Link></li>
             </ul>
         </div>
     </div>;

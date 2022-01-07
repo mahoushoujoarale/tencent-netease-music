@@ -11,6 +11,7 @@ import User from "@/pages/User/User";
 import SearchPage from "@/pages/SearchPage/SearchPage";
 import Singer from "@/pages/Singer/Singer";
 import RadioplayList from "@/pages/RadioplayList/RadioplayList";
+import SingerCat from "@/pages/SingerCat/SingerCat";
 
 const MainRouter = () => (
   <>
@@ -32,6 +33,7 @@ const MainRouter = () => (
       <Route path="song" element={<Song />} />
       <Route path="album" element={<Album />} />
       <Route path="playlist" element={<Playlist />} />
+      <Route path="discovery/singer/cat" element={<SingerCat/>}/>
       <Route path="*" element={<NotFound />} />
     </Routes>
   </>
