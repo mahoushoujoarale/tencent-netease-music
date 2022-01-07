@@ -19,7 +19,7 @@ const RadioplayRight = () => {
   }, []);
 
   return (
-    <div className="playlist-relative">
+    <div className="RplaylistRelative">
       <div className="title">你可能也喜欢</div>
       <div className="related-playlist-container">
         {(recommendDJList || []).map(

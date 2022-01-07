@@ -1,15 +1,15 @@
-.playlist-detail {
+.Rplaylist-detail {
     width: 4.4rem;
-    &>.top {
+    .Rtop {
         display: flex;
         margin-bottom: 40px;
 
-        &>.left {
+        &>.Rleft {
             width: 1.41rem;
             height: 1.21rem;
             text-align: center;
 
-            .playlist-cover {
+            .Rplaylist-cover {
                 width: 1.40rem;
                 height: 1.40rem;
                 display: flex;
@@ -17,7 +17,7 @@
                 align-items: center;
                 background: url("../../../../assets/images/coverall.png") 0 -1285px no-repeat;
 
-                &>img {
+                .Rimg {
                     width: 1.33rem;
                     height: 1.33rem;
                     display: block;
@@ -25,11 +25,11 @@
             }
         }
 
-        &>.right {
+        &>.Rright {
             margin-left: 0.13rem;
             flex: 1;
 
-            &>.playlist-name {
+            &>.Rplaylist-name {
                 font-size: 0.15rem;
                 max-width: 2.9rem;
                 color: #333333;
@@ -49,7 +49,7 @@
                 }
             }
 
-            &>.playlist-creator {
+            &>.Rplaylist-creator {
                 font-size: 0.08rem;
                 color: #666666;
                 margin-top: 4px;
@@ -61,35 +61,29 @@
                     height: 13px;
                 }
 
-                &>.creator-photo {
+                &>.Rcreator-photo {
                     width: 35px;
                     height: 35px;
                     margin-right: 10px;
 
-                    &>img {
+                    &>.Ravatar {
                         width: 35px;
                         height: 35px;
                     }
                 }
 
-                &>.creator-name {
+                &>.Rcreator-name {
                     color: #0c73c2;
-                }
-
-                &>.playlist-create-time {
-                    font-size: 12px;
-                    color: #999999;
-                    margin-left: 15px;
                 }
             }
 
-            &>.buttons {
+            &>.Rbuttons {
                 height: 31px;
                 display: flex;
                 align-items: center;
                 margin-top: 20px;
 
-                .play-button {
+                .Rplay-button {
                     width: 66px;
                     height: 31px;
                     color: white;
@@ -103,7 +97,7 @@
                     }
                 }
 
-                .add-to-list-button {
+                .Radd-to-list-button {
                     width: 31px;
                     height: 31px;
                     display: inline-block;
@@ -115,7 +109,7 @@
                     }
                 }
 
-                .store-button {
+                .Rstore-button {
                     width: 75px;
                     height: 31px;
                     margin-left: 6px;
@@ -145,7 +139,7 @@
                     }
                 }
 
-                .share-button {
+                .Rshare-button {
                     width: 65px;
                     height: 31px;
                     margin-left: 6px;
@@ -175,7 +169,7 @@
                     }
                 }
 
-                .download-button {
+                .Rdownload-button {
                     width: 59px;
                     height: 31px;
                     margin-left: 6px;
@@ -205,7 +199,7 @@
                     }
                 }
 
-                .comment-button {
+                .Rcomment-button {
                     width: 65px;
                     height: 31px;
                     margin-left: 6px;
@@ -236,28 +230,14 @@
                 }
             }
 
-            &>.tags {
+            &>.Rtags {
                 display: flex;
                 font-size: 12px;
                 color: #666666;
                 align-items: center;
                 margin: 20px 0 10px;
 
-                &>.tag {
-                    color: #777777;
-                    padding: 0 12px;
-                    background-color: #f7f7f7;
-                    border-radius: 10px;
-                    border: 1px solid #d9d9d9;
-                    cursor: pointer;
-                    margin: 0 5px;
-
-                    &:hover {
-                        background-color: #fcfcfc;
-                    }
-                }
-
-                & > .plCategory {
+                & > .RplCategory {
                     color: #cc0000;
                     border-color: #cc0000;
                     height: 20px;
@@ -265,12 +245,12 @@
                 }
             }
 
-            &>.playlist-desc {
+            &>.Rplaylist-desc {
                 max-height: 90px;
                 overflow: hidden;
                 text-overflow: ellipsis;
 
-                &>.desc-content {
+                &>.Rdesc-content {
                     width: 100%;
                     color: #666;
                     user-select: text;
@@ -278,7 +258,7 @@
                 }
             }
 
-            &>.fold-button {
+            &>.Rfold-button {
                 color: #0c73c2;
                 cursor: pointer;
                 text-align: right;
@@ -286,28 +266,20 @@
                 &:hover {
                     text-decoration: underline;
                 }
-
-                &>span {
-                    width: 11px;
-                    height: 8px;
-                    content: "";
-                    display: inline-block;
-                    background: url("../../../../assets/images/icon.png") -65px -520px no-repeat;
-                }
             }
         }
     }
 
-    &>.playlist-songs {
+    &>.Rplaylist-songs {
         margin-top: 30px;
 
-        &>.title-bar {
+        &>.Rtitle-bar {
             padding-bottom: 2px;
             display: flex;
             justify-content: space-between;
             border-bottom: 2px solid #c20c0c;
 
-            &>.title {
+            &>.Rtitle {
                 font-size: 20px;
                 color: #333333;
 
@@ -319,11 +291,11 @@
                 }
             }
 
-            &>.right {
+            &>.Rright {
                 display: flex;
                 align-items: center;
 
-                &>.out-link {
+                &>.Rout-link {
                     display: block;
                     margin-right: 20px;
                     text-decoration: underline;
@@ -339,7 +311,7 @@
                     }
                 }
 
-                &>.play-count {
+                &>.Rplay-count {
                     font-size: 12px;
                     color: #666666;
 
@@ -351,29 +323,22 @@
             }
         }
 
-        &>.song-list {
+        &>.Rsong-list {
             width: 4.4rem;
             border: 1px solid #d9d9d9;
             table-layout: fixed;
 
-            &>thead {
-                &>tr {
-                    height: 38px;
-                    color: #666666;
-                }
-            }
-
-            &>tbody {
-                &>tr {
+            &>.Rtbody {
+                &>.Rtr {
                     height: 30px;
 
                     &:hover {
-                        &>.td3 {
-                            &>.time-length {
+                        &>.Rtd3 {
+                            &>.Rtime-length {
                                 display: none;
                             }
 
-                            &>.options {
+                            &>.Roptions {
                                 display: flex;
                             }
                         }
@@ -390,7 +355,7 @@
                         padding: 0 8px;
                     }
 
-                    &>.td1 {
+                    &>.Rtd1 {
                         width: 1.0rem;
                         height: 30px;
                         padding: 0 0.1rem;
@@ -399,13 +364,13 @@
                         justify-content: space-between;
                         align-items: center;
 
-                        &>.no {
+                        &>.Rno {
                             margin-left: 5px;
                         }
 
-                        &>span {
+                        &>.RadioContentPlay {
                             display: inline-block;
-                            width: 0.22rem;
+                            width: 0.13rem;
                             height: 17px;
                             cursor: pointer;
                             background: url("../../../../assets/images/table.png") 0 -103px no-repeat;
@@ -416,34 +381,27 @@
                         }
                     }
 
-                    &>.td2 {
+                    &>.Rtd2 {
                         overflow: hidden;
                         white-space: nowrap;
                         color: #aeaeae;
                         text-overflow: ellipsis;
 
-                        &>.link-to-song {
+                        &>.Rlink-to-song {
                             font-size: 12px;
                             color: #333333;
                         }
                     }
 
-                    &>.td3 {
+                    &>.Rtd3 {
                         width: 0.61rem;
-
-                        &>.time-length {
-                            font-size: 12px;
-                            color: #666666;
-                        }
-
-                        &>.options {
+                        &>.Roptions {
                             display: none;
                             justify-content: space-between;
-
                         }
                     }
 
-                    &>.td4 {
+                    &>.Rtd4 {
                         width: 16%;
                         overflow: hidden;
                         white-space: nowrap;
@@ -456,68 +414,17 @@
                             }
                         }
 
-                        &>.link-to-artist {
-                            width: 100%;
-                            font-size: 12px;
-                            color: #333333;
-                        }
                     }
 
-                    &>.td5 {
+                    &>.Rtd5 {
                         width: 18%;
                         overflow: hidden;
                         white-space: nowrap;
                         text-overflow: ellipsis;
-
-                        &>.link-to-album {
-                            font-size: 12px;
-                            color: #333333;
-                            width: 100%;
-                        }
                     }
                 }
             }
         }
     }
 
-    &>.download-tips {
-        text-align: center;
-        margin-top: 30px;
-
-        &>.tips {
-            font-size: 13px;
-            color: #333333;
-        }
-
-        &>.download-button {
-            width: 120px;
-            height: 30px;
-            border-radius: 18px;
-            line-height: 30px;
-            margin: 15px auto 0;
-            color: #ffffff;
-            display: block;
-            text-decoration: none;
-            background-image: linear-gradient(90deg, #ff5a4c 0%, #ff1d12 100%);
-        }
-    }
-}
-
-.playlist-comments {
-    margin-top: 40px;
-
-    &>.playlist-comment-title {
-        width: 100%;
-        line-height: 21px;
-        color: #333333;
-        font-size: 12px;
-        font-weight: bold;
-        margin-top: 30px;
-        border-bottom: 1px solid #cfcfcf;
-    }
-
-    &>.playlist-pagination {
-        text-align: center;
-        margin: 20px 0;
-    }
 }

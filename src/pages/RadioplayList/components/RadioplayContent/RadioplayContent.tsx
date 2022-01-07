@@ -32,15 +32,11 @@ const RadioplayContent = () => {
     },
   });
 
-  const [currentPage, setCurrentPage] = useState(1);
   const [fold, setFold] = useState(true);
   const [descHeight, setDescHeight] = useState(0);
   const [relativeRaio,setRelativeRaio] = useState([])
   const playlistID = useLocation().search.slice(4);
 
-  useEffect(() => {
-    setDescHeight(document.querySelector(".desc-content")!.clientHeight);
-  }, [playlistDetail]);
 
   useEffect(() => {
     async function getData() {
@@ -70,25 +66,25 @@ const RadioplayContent = () => {
 
   return (
     <>
-      <div className="playlist-detail">
-        <div className="top">
-          <div className="left">
-            <div className="playlist-cover">
-              <img src={playlistDetail.picUrl} alt="封面" />
+      <div className="Rplaylist-detail">
+        <div className="Rtop">
+          <div className="Rleft">
+            <div className="Rplaylist-cover">
+              <img className="Rimg" src={playlistDetail.picUrl} alt="封面" />
             </div>
           </div>
-          <div className="right">
-            <div className="playlist-name">{playlistDetail.name}</div>
-            <div className="playlist-creator">
+          <div className="Rright">
+            <div className="Rplaylist-name">{playlistDetail.name}</div>
+            <div className="Rplaylist-creator">
               <Link
                 to={`/user/home?id=${playlistDetail.dj.userId}`}
-                className="creator-photo"
+                className="Rcreator-photo"
               >
-                <img src={playlistDetail.dj.avatarUrl} alt="头像" />
+                <img className="Ravatar" src={playlistDetail.dj.avatarUrl} alt="头像" />
               </Link>
               <Link
                 to={`/user/home?id=${playlistDetail.dj.userId}`}
-                className="creator-name"
+                className="Rcreator-name"
               >
                 {playlistDetail.dj.nickname}
               </Link>
@@ -101,32 +97,32 @@ const RadioplayContent = () => {
                 ""
               )}
             </div>
-            <div className="buttons">
+            <div className="Rbuttons">
               <div
-                className="play-button"
+                className="Rplay-button"
                 onClick={action(() => resetPlaylist(playlistDetail.id))}
               >
                 订阅
               </div>
-              <div className="add-to-list-button"></div>
-              <div className="download-button">下载</div>
-              <div className="comment-button">
+              <div className="Radd-to-list-button"></div>
+              <div className="Rdownload-button">下载</div>
+              <div className="Rcomment-button">
                 （{playlistDetail.commentCount}）
               </div>
             </div>
-            <div className="tags">
-              <div className="plCategory">{playlistDetail.category}</div>
+            <div className="Rtags">
+              <div className="RplCategory">{playlistDetail.category}</div>
             </div>
             <div
-              className="playlist-desc"
+              className="Rplaylist-desc"
               style={{ maxHeight: fold ? "" : "none" }}
             >
-              <div className="desc-content">
+              <div className="Rdesc-content">
                 介绍： {playlistDetail.desc}
               </div>
             </div>
             <div
-              className="fold-button"
+              className="Rfold-button"
               style={{
                 display: descHeight > 90 ? "" : "none",
               }}
@@ -139,25 +135,25 @@ const RadioplayContent = () => {
             </div>
           </div>
         </div>
-        <div className="playlist-songs">
-          <div className="title-bar">
-            <div className="title">
+        <div className="Rplaylist-songs">
+          <div className="Rtitle-bar">
+            <div className="Rtitle">
               节目列表 <span>共{playlistDetail.programCount}期</span>
             </div>
-            <div className="right">
+            <div className="Rright">
               <Link
-                className="out-link"
+                className="Rout-link"
                 to={`/outchain/2/${playlistDetail.id}`}
               >
                 生成外链播放器
               </Link>
-              <div className="play-count">
+              <div className="Rplay-count">
                 播放：<span>{playlistDetail.playCount}</span>次
               </div>
             </div>
           </div>
-          <table className="song-list">
-            <tbody>
+          <table className="Rsong-list">
+            <tbody className="Rtbody">
               {(relativeRaio || []).map(
                 (
                   item: {
@@ -170,33 +166,33 @@ const RadioplayContent = () => {
                   },
                   index: number
                 ) => (
-                  <tr key={index}>
-                    <td className="td1">
-                      <div className="no">{index + 1}</div>
+                  <tr className="Rtr" key={index}>
+                    <td className="Rtd1">
+                      <div className="Rno">{index + 1}</div>
                       <span
+                        className="RadioContentPlay"
                         onClick={action(() => addToPlaylist(item.id))}
                       ></span>
                     </td>
-                    <td className="td2">
-                      <Link to={`*`} className="link-to-song">
+                    <td className="Rtd2">
+                      <Link to={`*`} className="Rlink-to-song">
                         {item.name}
                       </Link>
                     </td>
-                    <td className="td3">
-                      <div className="options">
+                    <td className="Rtd3">
+                      <div className="Roptions">
                         <div
-                          className="add-button"
+                          className="Radd-button"
                           title="添加到播放列表"
                         ></div>
-                        <div className="store-button" title="收藏"></div>
-                        <div className="share-button" title="分享"></div>
-                        <div className="download-button" title="下载"></div>
+                        <div className="Rshare-button" title="分享"></div>
+                        <div className="Rdownload-button" title="下载"></div>
                       </div>
                     </td>
-                    <td className="td4">
+                    <td className="Rtd4">
                       <div>赞{item.likedCount}</div>
                     </td>
-                    <td className="td5">
+                    <td className="Rtd5">
                       <div>
                         播放{Math.floor(item.listenerCount/10000)}
                       </div>
