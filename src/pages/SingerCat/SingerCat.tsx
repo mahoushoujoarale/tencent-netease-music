@@ -3,16 +3,23 @@ import './SingerCat.module.css'
 import SingerLeft from "../Singer/SingerLeft/SingerLeft";
 import { Link, useLocation } from "react-router-dom";
 import { getSinger } from "@/apis/getSinger";
+import { stringify } from "querystring";
 
 const SingerCat = () => {
-  const location = useLocation();
-  const id = location.search.slice(4)
-  const len = id.length
-  const area = id.substring(0,len-1)
-  const type = id.substring(len-1);
-  console.log("type,area",type," ",area);
-
   const [allSingerList, setAllSingerList] = useState([])
+  // const [name,setName] = useState("");
+
+  const location = useLocation();
+  const infor:string = decodeURI(location.search).slice(4)
+  const loc = infor.indexOf("&")
+  const area = infor.substring(0,loc-1)
+  const type = infor.substring(loc-1,loc);
+  // setName(infor.substring(loc+6))
+  const name = infor.substring(loc+6)
+  console.log("type,area",type," ",area, name);
+
+
+
   useEffect(() => {
     getSinger({ type: type }, { area: area }).then((res) => {
       if (res.code === 200) {
@@ -20,7 +27,7 @@ const SingerCat = () => {
       }
       console.log("getSingerCat", res)
     })
-  }, [])
+  }, [name])
 
   const LinkStyle = {
     color: "#666"
@@ -37,7 +44,7 @@ const SingerCat = () => {
       <div className="SRWrapper">
         <div className="SRTitle">
           <h3 className="SRText">
-            <Link style={LinkStyle} to={'*'}>推荐歌手</Link>
+            <Link style={LinkStyle} to={'*'}>{decodeURI(name)}</Link>
           </h3>
           <div className="SRMoreText">
             <Link style={LinkStyle} to={'*'}> 更多 &gt;</Link>

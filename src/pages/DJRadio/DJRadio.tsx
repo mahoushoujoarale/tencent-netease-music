@@ -19,7 +19,6 @@ const refreshRem = () => {
     }
     var rem = width / 10;
     docEl.style.fontSize = rem + 'px';
-    console.log("rem:, width",rem, width);
     window.addEventListener('resize', refreshRem);
 }
 
